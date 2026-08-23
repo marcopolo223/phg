@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s — Prince Hassan Group",
   },
   description:
-    "Six markets. Five languages. One maker of legacies. The real estate advisory that seals a legacy.",
+    "Six markets. Five languages. One maker of legacies. A private real estate advisory.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col bg-cream text-brown">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 overflow-x-hidden">{children}</main>
         <Footer />
       </body>
     </html>

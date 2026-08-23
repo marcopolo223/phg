@@ -40,7 +40,7 @@ export function HeroVideo() {
         <source src="/video/hero.mp4" type="video/mp4" />
       </video>
 
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-5 text-center fade-up">
+      <div className="pointer-events-none relative z-10 flex h-full flex-col items-center justify-center px-5 text-center fade-up">
         <Image
           src="/brand/hero-ph.png"
           alt="Prince Hassan Group"

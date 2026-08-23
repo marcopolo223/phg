@@ -1,89 +1,86 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
+import { useDragMarquee } from "@/lib/use-drag-marquee";
 
-const quotes = [
+const quotes: { name: string; body: ReactNode }[] = [
   {
-    quote:
-      "Prince has been with me since I rented my first apartment. In the years following, I've worked with him from everything from upgrading that initial investment, and getting access to the world of horology. Beyond Real Estate, whatever negotiation I enter, I call him first.",
-    name: "Aman · Buyer · Miami/Fort Lauderdale",
+    name: "Aman · Buyer · Miami / Fort Lauderdale",
+    body: (
+      <>
+        Prince has been with me since I rented my first apartment. Years later
+        he is still the person I call — for the next home, and for rooms far
+        outside real estate.{" "}
+        <em className="italic">Whatever negotiation I enter, I call him first.</em>
+      </>
+    ),
   },
   {
-    quote:
-      "I met Prince in college when he was closing rentals at rapid speed. The joke in our group was always, why didn't we do what Prince did? He saw the opening before anyone else. That's still true. That's why I asked him to support my family's legacy expansion.",
     name: "Seth · Investor · Family Office · Global",
+    body: (
+      <>
+        I met Prince in college, when he was already closing faster than the
+        rest of us could see the opening.{" "}
+        <em className="italic">
+          That instinct is why my family asked him to help expand our legacy.
+        </em>
+      </>
+    ),
   },
   {
-    quote:
-      "Prince knew things about my family before I said them out loud. His own story is similar to mine, so I didn't have to explain what was important in the deal. Since the sale of my family home, my mom still invites him to lunch.",
     name: "Yasmeen · Seller · Fort Lauderdale",
+    body: (
+      <>
+        He understood what the house meant before I found the words.{" "}
+        <em className="italic">
+          After the sale, my mother still invites him to lunch.
+        </em>
+      </>
+    ),
   },
 ];
 
-export function TestimonialCarousel() {
-  const [index, setIndex] = useState(0);
-  const [fade, setFade] = useState(true);
-  const fadeTimer = useRef<number>(0);
-
-  const goTo = useCallback((next: number) => {
-    window.clearTimeout(fadeTimer.current);
-    setFade(false);
-    fadeTimer.current = window.setTimeout(() => {
-      setIndex((next + quotes.length) % quotes.length);
-      setFade(true);
-    }, 420);
-  }, []);
-
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
-
-    const id = window.setInterval(() => {
-      setFade(false);
-      window.clearTimeout(fadeTimer.current);
-      fadeTimer.current = window.setTimeout(() => {
-        setIndex((current) => (current + 1) % quotes.length);
-        setFade(true);
-      }, 420);
-    }, 6000);
-
-    return () => {
-      window.clearInterval(id);
-      window.clearTimeout(fadeTimer.current);
-    };
-  }, []);
-
-  const item = quotes[index];
-
+function QuoteCard({ item }: { item: (typeof quotes)[number] }) {
   return (
-    <div className="relative mx-auto max-w-4xl px-11 text-center sm:px-12 md:px-20">
-      <button
-        type="button"
-        aria-label="Previous"
-        className="absolute left-0 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center font-display text-3xl text-brown"
-        onClick={() => goTo(index - 1)}
-      >
-        ‹
-      </button>
-      <blockquote
-        className="transition-opacity duration-500 ease-out"
-        style={{ opacity: fade ? 1 : 0 }}
-      >
-        <p className="font-serif text-2xl leading-snug text-brown md:text-3xl lg:text-[2.15rem]">
-          “{item.quote}”
+    <article className="testimonial-card">
+      <blockquote>
+        <p className="font-serif text-[1.25rem] leading-[1.75] text-brown md:text-[1.5rem] md:leading-[1.8]">
+          “{item.body}”
         </p>
-        <footer className="mt-8 font-display text-[15px] uppercase tracking-[0.14em] text-brown">
+        <footer className="mt-8 font-display text-[13px] uppercase tracking-[0.16em] text-brown/80 md:mt-10 md:text-[14px]">
           {item.name}
         </footer>
       </blockquote>
-      <button
-        type="button"
-        aria-label="Next"
-        className="absolute right-0 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center font-display text-3xl text-brown"
-        onClick={() => goTo(index + 1)}
-      >
-        ›
-      </button>
+    </article>
+  );
+}
+
+export function TestimonialCarousel() {
+  const marquee = useDragMarquee(28);
+
+  return (
+    <div
+      ref={marquee.viewportRef}
+      className="testimonial-marquee"
+      role="region"
+      aria-label="Client notes"
+      onPointerDown={marquee.onPointerDown}
+      onPointerMove={marquee.onPointerMove}
+      onPointerUp={marquee.onPointerUp}
+      onPointerCancel={marquee.onPointerUp}
+    >
+      <div ref={marquee.trackRef} className="testimonial-marquee-track">
+        <div ref={marquee.groupRef} className="flex shrink-0 gap-5">
+          {quotes.map((item) => (
+            <QuoteCard key={`a-${item.name}`} item={item} />
+          ))}
+        </div>
+        <div className="flex shrink-0 gap-5" aria-hidden="true">
+          {quotes.map((item) => (
+            <QuoteCard key={`b-${item.name}`} item={item} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

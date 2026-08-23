@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Reveal } from "@/components/reveal";
+import { ContinueStrip } from "@/components/continue-strip";
 import { PastTransactionsMarquee } from "@/components/past-transactions-marquee";
+import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
   title: "Markets & Properties",
@@ -51,7 +52,7 @@ const markets = [
   {
     name: "HOUSTON",
     image: "/images/markets/houston.jpg",
-    copy: "Expanding the skyline, spring 2026.",
+    copy: "Expanding the skyline, Spring 2026.",
     photoClass: "mkt-hou-photo",
     nameClass: "mkt-hou-name",
     copyClass: "mkt-hou-copy",
@@ -59,7 +60,7 @@ const markets = [
   {
     name: "NEW JERSEY",
     image: "/images/markets/new-jersey.jpg",
-    copy: "Select properties opening summer 2027.",
+    copy: "Select properties opening Summer 2027.",
     photoClass: "mkt-nj-photo",
     nameClass: "mkt-nj-name",
     copyClass: "mkt-nj-copy",
@@ -125,7 +126,7 @@ export default function MarketsPage() {
           />
         </Reveal>
         <Reveal delay={80} className="mkt-hero-title flex items-end">
-          <h1 className="font-serif text-[clamp(2.6rem,6.2vw,5.8rem)] leading-[0.92] tracking-tight text-brown">
+          <h1 className="w-full text-center font-serif text-[clamp(2.4rem,11vw,5.8rem)] leading-[0.92] tracking-tight text-brown md:text-left">
             Markets that
             <br />
             make
@@ -134,7 +135,7 @@ export default function MarketsPage() {
           </h1>
         </Reveal>
         <Reveal delay={140} className="mkt-hero-body flex items-start">
-          <p className="max-w-xl text-[1.15rem] leading-[1.8] text-brown md:text-[1.35rem]">
+          <p className="mx-auto max-w-xl text-center text-[1.08rem] leading-[1.8] text-brown md:mx-0 md:text-left md:text-[1.35rem]">
             Prince arrives at transactions from the inside: the neighborhoods,
             the buildings, the families who&apos;ve been here long enough to
             know the difference between flash and what will last.
@@ -164,7 +165,7 @@ export default function MarketsPage() {
             key={`${market.name}-name`}
             className={`mkt-name ${market.nameClass} flex items-end`}
           >
-            <h2 className="font-display text-[clamp(1.7rem,8.4vw,5.2rem)] leading-none tracking-wide text-cream">
+            <h2 className="w-full text-center font-display text-[clamp(1.7rem,8.4vw,5.2rem)] leading-none tracking-wide text-cream drop-shadow-[0_1px_12px_rgba(0,0,0,0.45)]">
               {market.name}
             </h2>
           </Reveal>
@@ -174,14 +175,14 @@ export default function MarketsPage() {
             key={`${market.name}-copy`}
             className={`mkt-copy ${market.copyClass} flex items-start`}
           >
-            <p className="max-w-[22rem] text-[1.02rem] leading-[1.7] text-cream md:text-[1.12rem]">
+            <p className="mx-auto max-w-[22rem] text-center text-[1.02rem] leading-[1.7] text-cream drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)] md:text-[1.12rem]">
               {market.copy}
             </p>
           </Reveal>
         ))}
       </section>
 
-      <section className="overflow-hidden pb-20 pt-10 md:pb-28 md:pt-16">
+      <section className="pb-20 pt-10 md:pb-28 md:pt-16">
         <Reveal>
           <p className="mb-10 text-center font-display text-[22px] uppercase tracking-[0.18em] text-brown md:mb-14 md:text-[28px] lg:text-[34px]">
             Past transactions
@@ -189,6 +190,12 @@ export default function MarketsPage() {
         </Reveal>
         <PastTransactionsMarquee deals={deals} />
       </section>
+
+      <ContinueStrip
+        kicker="Continue"
+        href="/contact-prince"
+        label="Begin a conversation"
+      />
     </>
   );
 }

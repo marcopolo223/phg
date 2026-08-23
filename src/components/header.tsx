@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { nav } from "@/lib/site";
 
 export function Header() {
@@ -11,6 +12,11 @@ export function Header() {
   const home = pathname === "/" || pathname === "/about";
   const [open, setOpen] = useState(false);
   const [overHero, setOverHero] = useState(home);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -31,10 +37,19 @@ export function Header() {
 
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
+    const html = document.documentElement;
+    const prevBody = document.body.style.overflow;
+    const prevHtml = html.style.overflow;
     document.body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = prevBody;
+      html.style.overflow = prevHtml;
+      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
@@ -48,18 +63,84 @@ export function Header() {
 
   const lightBars = home && overHero && !open;
 
+  const overlay =
+    mounted && open
+      ? createPortal(
+          <div
+            id="mobile-nav"
+            className="fixed inset-0 z-[200] flex h-[100dvh] flex-col bg-cream lg:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site menu"
+          >
+            <div className="flex items-center justify-between px-[max(1.25rem,env(safe-area-inset-left))] py-3 pr-[max(1.25rem,env(safe-area-inset-right))] pt-[max(0.75rem,env(safe-area-inset-top))]">
+              <Link
+                href="/"
+                aria-label="Prince Hassan Group home"
+                className="shrink-0"
+                onClick={() => setOpen(false)}
+              >
+                <Image
+                  src="/brand/logo.png"
+                  alt="Prince Hassan Group"
+                  width={220}
+                  height={126}
+                  className="h-[3.15rem] w-auto object-contain sm:h-[3.5rem]"
+                />
+              </Link>
+              <button
+                type="button"
+                className="flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-[7px]"
+                aria-label="Close menu"
+                onClick={() => setOpen(false)}
+              >
+                <span className="h-px w-6 translate-y-[4px] rotate-45 bg-brown" />
+                <span className="h-px w-6 opacity-0 bg-brown" />
+                <span className="h-px w-6 -translate-y-[4px] -rotate-45 bg-brown" />
+              </button>
+            </div>
+
+            <nav className="flex flex-1 flex-col items-center justify-center gap-7 px-6 pb-[max(3rem,env(safe-area-inset-bottom))] text-center">
+              {nav.map((item) => {
+                const active =
+                  item.href === "/"
+                    ? pathname === "/" || pathname === "/about"
+                    : pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    data-active={active}
+                    className="nav-link block w-full text-center text-[clamp(1.65rem,6.5vw,2.35rem)] leading-none tracking-[0.08em]"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>,
+          document.body,
+        )
+      : null;
+
   return (
     <header
       className={
         home
-          ? `fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          ? `fixed inset-x-0 top-0 z-[100] transition-colors duration-300 ${
               overHero && !open ? "bg-transparent" : "bg-cream/95 backdrop-blur-md"
             }`
-          : "sticky top-0 z-50 border-b border-line/70 bg-cream/95 backdrop-blur-md"
+          : "sticky top-0 z-[100] border-b border-line/70 bg-cream/95 backdrop-blur-md"
       }
     >
       <div className="mx-auto flex w-full max-w-[1800px] items-center justify-between gap-4 px-[max(1.25rem,env(safe-area-inset-left))] py-3 pr-[max(1.25rem,env(safe-area-inset-right))] pt-[max(0.75rem,env(safe-area-inset-top))] md:gap-6 md:px-16 md:py-5 lg:px-20">
-        <Link href="/" className="relative shrink-0" onClick={() => setOpen(false)}>
+        <Link
+          href="/"
+          aria-label="Prince Hassan Group home"
+          className="relative z-10 shrink-0 cursor-pointer"
+          onClick={() => setOpen(false)}
+        >
           <Image
             src="/brand/logo.png"
             alt="Prince Hassan Group"
@@ -108,26 +189,7 @@ export function Header() {
           />
         </button>
       </div>
-
-      {open && (
-        <nav
-          id="mobile-nav"
-          className="border-t border-line bg-cream px-[max(1.5rem,env(safe-area-inset-left))] py-8 pr-[max(1.5rem,env(safe-area-inset-right))] lg:hidden"
-        >
-          <div className="flex min-h-[min(70svh,28rem)] flex-col gap-1">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="nav-link py-2.5"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </nav>
-      )}
+      {overlay}
     </header>
   );
 }

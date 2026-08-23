@@ -54,8 +54,8 @@ const stats = [
   },
 ];
 
-function easeOutCubic(t: number) {
-  return 1 - (1 - t) ** 3;
+function easeOutQuad(t: number) {
+  return 1 - (1 - t) ** 2;
 }
 
 function StatValue({
@@ -84,13 +84,13 @@ function StatValue({
 
     let frame = 0;
     let start: number | null = null;
-    const duration = 1600;
+    const duration = 3800;
 
     const wait = window.setTimeout(() => {
       const tick = (now: number) => {
         if (start === null) start = now;
         const t = Math.min(1, (now - start) / duration);
-        setDisplay(Math.round(easeOutCubic(t) * amount));
+        setDisplay(Math.round(easeOutQuad(t) * amount));
         if (t < 1) frame = requestAnimationFrame(tick);
       };
       frame = requestAnimationFrame(tick);
@@ -118,16 +118,22 @@ export function StatsCounter() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    const activate = () => setActive(true);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setActive(true);
+          activate();
           observer.disconnect();
         }
       },
-      { threshold: 0.35 },
+      { threshold: 0.12, rootMargin: "80px 0px" },
     );
     observer.observe(el);
+
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) activate();
+
     return () => observer.disconnect();
   }, []);
 
@@ -139,7 +145,7 @@ export function StatsCounter() {
       <div className="grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-6">
         {stats.map((item, i) => (
           <div key={item.label} className="text-center">
-            <p className="font-display text-[14px] uppercase tracking-[0.2em] text-brown md:text-[15px]">
+            <p className="font-display text-[12px] uppercase tracking-[0.1em] text-brown sm:text-[14px] sm:tracking-[0.2em] md:text-[15px]">
               {item.label}
             </p>
             <StatValue
@@ -147,11 +153,11 @@ export function StatsCounter() {
               amount={item.amount}
               suffix={item.suffix}
               active={active}
-              delay={i * 90}
+              delay={i * 160}
             />
             <div className="mx-auto mt-4 h-px w-11 bg-brown/35" />
             {item.lines ? (
-              <p className="mt-4 font-display text-[13px] uppercase leading-[1.7] tracking-[0.18em] text-brown md:text-[14px]">
+              <p className="mt-4 font-display text-[11px] uppercase leading-[1.7] tracking-[0.08em] text-brown sm:text-[13px] sm:tracking-[0.18em] md:text-[14px]">
                 {item.lines.map((line) => (
                   <span key={line} className="block">
                     {line}
@@ -159,7 +165,7 @@ export function StatsCounter() {
                 ))}
               </p>
             ) : (
-              <p className="mx-auto mt-4 max-w-[14ch] font-display text-[13px] uppercase leading-[1.7] tracking-[0.18em] text-brown md:text-[14px]">
+              <p className="mx-auto mt-4 max-w-[14ch] font-display text-[11px] uppercase leading-[1.7] tracking-[0.08em] text-brown sm:text-[13px] sm:tracking-[0.18em] md:text-[14px]">
                 {item.detail}
               </p>
             )}

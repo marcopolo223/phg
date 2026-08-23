@@ -19,7 +19,7 @@ export function Footer() {
   return (
     <footer className="bg-[#4a433c] text-cream">
       <div className="mx-auto grid max-w-[1680px] items-center gap-10 px-[max(1.25rem,env(safe-area-inset-left))] py-12 pr-[max(1.25rem,env(safe-area-inset-right))] pb-[max(3.5rem,env(safe-area-inset-bottom))] md:grid-cols-[1fr_auto_1fr] md:gap-8 md:px-12 md:py-20">
-        <nav className="flex flex-col gap-1.5 md:col-start-1 md:row-start-1">
+        <nav className="flex flex-col items-center gap-1.5 md:col-start-1 md:row-start-1 md:items-start">
           {left.map((item) => (
             <Link key={item.href} href={item.href} className="nav-link w-fit py-1.5">
               {item.label}
@@ -45,7 +45,7 @@ export function Footer() {
           />
         </div>
 
-        <div className="flex flex-col gap-1.5 md:col-start-3 md:row-start-1 md:items-end md:text-right">
+        <div className="flex flex-col items-center gap-1.5 text-center md:col-start-3 md:row-start-1 md:items-end md:text-right">
           {right.map((item) =>
             item.external ? (
               <a
