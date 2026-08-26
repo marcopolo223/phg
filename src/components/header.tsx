@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { Wordmark } from "@/components/wordmark";
 import { nav } from "@/lib/site";
 
 export function Header() {
@@ -77,16 +77,10 @@ export function Header() {
               <Link
                 href="/"
                 aria-label="Prince Hassan Group home"
-                className="shrink-0"
+                className="shrink-0 text-brown"
                 onClick={() => setOpen(false)}
               >
-                <Image
-                  src="/brand/logo.png"
-                  alt="Prince Hassan Group"
-                  width={220}
-                  height={126}
-                  className="h-[3.15rem] w-auto object-contain sm:h-[3.5rem]"
-                />
+                <Wordmark />
               </Link>
               <button
                 type="button"
@@ -138,17 +132,10 @@ export function Header() {
         <Link
           href="/"
           aria-label="Prince Hassan Group home"
-          className="relative z-10 shrink-0 cursor-pointer"
+          className={`relative z-10 shrink-0 cursor-pointer ${lightBars ? "text-cream" : "text-brown"}`}
           onClick={() => setOpen(false)}
         >
-          <Image
-            src="/brand/logo.png"
-            alt="Prince Hassan Group"
-            width={220}
-            height={126}
-            priority
-            className="h-[3.15rem] w-auto object-contain sm:h-[3.5rem] md:h-[4.15rem]"
-          />
+          <Wordmark />
         </Link>
 
         <nav className="hidden items-center gap-5 lg:flex xl:gap-8">

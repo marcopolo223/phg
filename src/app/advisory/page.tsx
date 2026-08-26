@@ -16,11 +16,11 @@ const audiences = [
   },
   {
     title: "Investors",
-    copy: "A wide scan, a precise move. Each acquisition is considered in person — and the relationship continues after it closes.",
+    copy: "A wide scan. A precise move. Each acquisition is considered in person — and the relationship continues after it closes.",
   },
   {
     title: "Young Professionals",
-    copy: "First rental, first purchase, first step up. The counsel compounds with the portfolio.",
+    copy: "First rental. First purchase. First step up. The counsel compounds with the portfolio.",
   },
   {
     title: "Sellers",
@@ -315,7 +315,7 @@ export default function AdvisoryPage() {
       <ContinueStrip
         kicker="Continue"
         href="/markets-properties"
-        label="The markets he holds"
+        label="The Markets He Holds"
       />
     </>
   );

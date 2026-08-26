@@ -19,7 +19,7 @@ export function ContinueStrip({
           </p>
           <Link
             href={href}
-            className="mt-4 inline-block font-serif text-[clamp(1.7rem,4vw,2.6rem)] leading-tight tracking-tight text-brown underline decoration-brown/30 underline-offset-[0.28em] transition hover:decoration-brown"
+            className="mt-4 inline-block font-serif text-[clamp(1.7rem,4vw,2.6rem)] uppercase leading-tight tracking-tight text-brown underline decoration-brown/30 underline-offset-[0.28em] transition hover:decoration-brown"
           >
             {label}
           </Link>

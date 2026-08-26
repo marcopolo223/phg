@@ -37,9 +37,6 @@ export default function ContactPage() {
         >
           {site.email}
         </a>
-        <p className="mx-auto mt-6 max-w-sm text-[1.02rem] leading-[1.8] text-brown/80 md:mx-0">
-          Inquiries by email. A conversation, not a form.
-        </p>
 
         <Image
           src="/images/contact/cat.webp"

@@ -29,10 +29,9 @@ export default function HomePage() {
               </p>
               <div className="mt-7 space-y-7 text-[1.05rem] leading-[1.9] text-brown md:text-[1.12rem]">
                 <p>
-                  At twenty-eight, with nearly a decade in the field, Prince
-                  Hassan has closed close to{" "}
-                  <em className="italic">$80 million</em> across Miami, Fort
-                  Lauderdale, Manhattan, and the Hamptons.
+                  Twenty-eight. Nearly a decade in the field. Close to{" "}
+                  <em className="italic">$80 million</em> closed across Miami,
+                  Fort Lauderdale, Manhattan, and the Hamptons.
                 </p>
                 <p>
                   He came up through an invitation-only track, working beside
@@ -46,7 +45,7 @@ export default function HomePage() {
                   a fourteen-person team by graduation.
                 </p>
                 <p>
-                  Today the advisory is a private office: a select client base,
+                  Today the advisory is a private office: a select circle,
                   direct access, no handoffs — from South of Fifth oceanfront
                   to custom estates in Coral Gables, and the portfolios that
                   connect them.
@@ -112,7 +111,7 @@ export default function HomePage() {
       <ContinueStrip
         kicker="Continue"
         href="/advisory"
-        label="The advisory"
+        label="The Advisory"
       />
     </>
   );

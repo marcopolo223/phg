@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Wordmark } from "@/components/wordmark";
 import { site } from "@/lib/site";
 
 const left = [
@@ -29,10 +30,8 @@ export function Footer() {
 
         <div className="order-first flex flex-col items-center justify-center gap-4 md:order-none md:col-start-2 md:row-start-1 md:flex-row md:gap-8">
           <div className="text-center">
-            <p className="font-serif text-4xl tracking-tight md:text-5xl lg:text-6xl">
-              PRINCE.
-            </p>
-            <p className="mt-2 font-display text-[12px] uppercase tracking-[0.18em] text-cream/80 md:mt-3 md:text-[14px]">
+            <Wordmark size="footer" className="text-cream" />
+            <p className="mt-3 font-display text-[12px] uppercase tracking-[0.2em] text-cream/80 md:mt-4 md:text-[14px]">
               Precision · Pulse · Presence
             </p>
           </div>

@@ -1,26 +1,81 @@
 import type { Metadata, Viewport } from "next";
-import { Bebas_Neue, Newsreader, Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import "./globals.css";
 
-const sans = Outfit({
+const sans = localFont({
+  src: [
+    {
+      path: "../fonts/HurmeGeometricSans1-Light.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../fonts/HurmeGeometricSans1-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/HurmeGeometricSans1-SemiBold.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/HurmeGeometricSans1-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../fonts/HurmeGeometricSans1-Black.otf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
   variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  display: "swap",
+  fallback: ["system-ui", "sans-serif"],
 });
 
-const serif = Newsreader({
+const serif = localFont({
+  src: [
+    {
+      path: "../fonts/SometimesTimes-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/SometimesTimes-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/SometimesTimes-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  display: "swap",
+  adjustFontFallback: "Times New Roman",
+  fallback: ["Times New Roman", "serif"],
 });
 
-const display = Bebas_Neue({
+const display = localFont({
+  src: "../fonts/BebasNeuePro-Bold.otf",
   variable: "--font-display",
-  subsets: ["latin"],
+  weight: "700",
+  display: "swap",
+  fallback: ["Impact", "sans-serif"],
+});
+
+const quote = localFont({
+  src: "../fonts/MinionPro-Regular.otf",
+  variable: "--font-quote",
   weight: "400",
+  display: "swap",
+  adjustFontFallback: "Times New Roman",
+  fallback: ["Times New Roman", "serif"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +84,7 @@ export const metadata: Metadata = {
     template: "%s — Prince Hassan Group",
   },
   description:
-    "Six markets. Five languages. One maker of legacies. A private real estate advisory.",
+    "Six markets. Five languages. One maker of legacies.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -47,7 +102,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${sans.variable} ${serif.variable} ${display.variable} h-full antialiased`}
+      className={`${sans.variable} ${serif.variable} ${display.variable} ${quote.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-cream text-brown">
         <Header />

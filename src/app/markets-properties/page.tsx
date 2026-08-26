@@ -36,7 +36,7 @@ const markets = [
   {
     name: "PALM BEACH",
     image: "/images/markets/palm-beach.jpg",
-    copy: "Where Prince meets past prestige with future-oriented vision.",
+    copy: "Where inherited prestige meets the next chapter of the name.",
     photoClass: "mkt-pb-photo",
     nameClass: "mkt-pb-name",
     copyClass: "mkt-pb-copy",
@@ -44,7 +44,7 @@ const markets = [
   {
     name: "HAMPTONS",
     image: "/images/markets/hamptons.jpg",
-    copy: "The next shoreline, arriving 2027.",
+    copy: "The next shoreline. Arriving 2027.",
     photoClass: "mkt-hp-photo",
     nameClass: "mkt-hp-name",
     copyClass: "mkt-hp-copy",
@@ -52,15 +52,15 @@ const markets = [
   {
     name: "HOUSTON",
     image: "/images/markets/houston.jpg",
-    copy: "Expanding the skyline, Spring 2026.",
+    copy: "The next skyline. Spring 2026.",
     photoClass: "mkt-hou-photo",
     nameClass: "mkt-hou-name",
     copyClass: "mkt-hou-copy",
   },
   {
-    name: "NEW JERSEY",
-    image: "/images/markets/new-jersey.jpg",
-    copy: "Select properties opening Summer 2027.",
+    name: "ORLANDO",
+    image: "/images/markets/orlando.jpg",
+    copy: "Where Florida's private lakes keep their own estates.",
     photoClass: "mkt-nj-photo",
     nameClass: "mkt-nj-name",
     copyClass: "mkt-nj-copy",
@@ -70,42 +70,42 @@ const markets = [
 const deals = [
   {
     title: "300 S Pointe Dr #2801 — $4,500,000",
-    copy: "Off-market at Miami's southernmost point. 360° views of the city, bay, and ocean.",
+    copy: "Held off-market at Miami's southernmost point. City, bay, and ocean in one turn.",
     image: "/images/properties/south-pointe.jpg",
   },
   {
     title: "Missoni Baia #5201 — $3,250,000",
-    copy: "Bay-view residences with world-class design. Three closings in this building, and counting.",
+    copy: "Three closings in this building. The bay, the architecture, and a clientele that stays.",
     image: "/images/properties/missoni-5201.jpg",
   },
   {
     title: "Windermere FL — $3,150,000",
-    copy: "Nearly an acre inside one of Florida's most prestigious gated communities.",
+    copy: "Nearly an acre, inside a gated community that does not need to introduce itself.",
     image: "/images/properties/windermere.jpg",
   },
   {
     title: "Fort Lauderdale / Harbor Inlet — $2,800,000",
-    copy: "A private enclave minutes from Harbor Beach and Fort Lauderdale's best coastline.",
+    copy: "A private inlet. Minutes from Harbor Beach, and the coastline that holds Fort Lauderdale.",
     image: "/images/properties/harbor-inlet.jpg",
   },
   {
     title: "695 1st Ave — $2,335,000",
-    copy: "Richard Meier's first black-glass tower, 28th floor. Unobstructed Manhattan skyline views.",
+    copy: "Richard Meier's first black-glass tower, twenty-eighth floor. The Manhattan skyline, unobstructed.",
     image: "/images/properties/first-ave.jpg",
   },
   {
     title: "425 NW 119th Ave — $2,000,000",
-    copy: "Five-bedroom compound on three-quarters of an acre. Resort pool with grotto, tiki kitchen, basketball court, and putting green.",
+    copy: "Five bedrooms on three-quarters of an acre. A compound built to be lived in — not merely held.",
     image: "/images/properties/425-nw.jpg",
   },
   {
     title: "Missoni Baia #1703 — $1,880,000",
-    copy: "Another chapter in the same building — design, views, and a community worth staying in.",
+    copy: "A second chapter in the same building. Proof the first was not an accident.",
     image: "/images/properties/missoni-1703.jpeg",
   },
   {
     title: "1010 Brickell #2505 — $1,400,000",
-    copy: "A premier Brickell address for professionals and families, at the right entry point.",
+    copy: "Brickell held at the right altitude. A first address with room to grow the name.",
     image: "/images/properties/1010-brickell.jpg",
   },
 ];
@@ -126,7 +126,7 @@ export default function MarketsPage() {
           />
         </Reveal>
         <Reveal delay={80} className="mkt-hero-title flex items-end">
-          <h1 className="w-full text-center font-serif text-[clamp(2.4rem,11vw,5.8rem)] leading-[0.92] tracking-tight text-brown md:text-left">
+          <h1 className="w-full text-center font-serif text-[clamp(2.4rem,11vw,5.8rem)] uppercase leading-[0.92] tracking-tight text-brown md:text-left">
             Markets that
             <br />
             make
@@ -136,9 +136,9 @@ export default function MarketsPage() {
         </Reveal>
         <Reveal delay={140} className="mkt-hero-body flex items-start">
           <p className="mx-auto max-w-xl text-center text-[1.08rem] leading-[1.8] text-brown md:mx-0 md:text-left md:text-[1.35rem]">
-            Prince arrives at transactions from the inside: the neighborhoods,
-            the buildings, the families who&apos;ve been here long enough to
-            know the difference between flash and what will last.
+            Prince arrives at a transaction from the inside: the neighborhoods,
+            the buildings, the families who have been here long enough to know
+            the difference between flash and what will last.
           </p>
         </Reveal>
       </section>
@@ -194,7 +194,7 @@ export default function MarketsPage() {
       <ContinueStrip
         kicker="Continue"
         href="/contact-prince"
-        label="Begin a conversation"
+        label="Contact Prince"
       />
     </>
   );

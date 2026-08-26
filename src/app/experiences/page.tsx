@@ -29,14 +29,14 @@ export default function ExperiencesPage() {
           </h1>
           <p className="mx-auto mt-8 max-w-md text-[1.08rem] leading-[1.9] text-brown md:text-[1.15rem]">
             A private calendar of rooms, tables, and landscapes — released in
-            season, by introduction.
+            season, and only by introduction.
           </p>
         </Reveal>
       </section>
       <ContinueStrip
-        kicker="In the meantime"
+        kicker="Continue"
         href="/contact-prince"
-        label="Write to Prince"
+        label="Contact Prince"
       />
     </>
   );
