@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { onEnterView } from "@/lib/on-enter-view";
 
 const stats = [
   {
@@ -76,15 +77,9 @@ function StatValue({
   useEffect(() => {
     if (!active) return;
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      setDisplay(amount);
-      return;
-    }
-
     let frame = 0;
     let start: number | null = null;
-    const duration = 3800;
+    const duration = 2600;
 
     const wait = window.setTimeout(() => {
       const tick = (now: number) => {
@@ -118,45 +113,7 @@ export function StatsCounter() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
-    let started = false;
-    const activate = () => {
-      if (started) return;
-      started = true;
-      setActive(true);
-    };
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          activate();
-          observer.disconnect();
-        }
-      },
-      { threshold: 0, rootMargin: "120px 0px" },
-    );
-    observer.observe(el);
-
-    const check = () => {
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight || document.documentElement.clientHeight;
-      if (rect.top < vh && rect.bottom > 0) {
-        activate();
-        observer.disconnect();
-        window.removeEventListener("scroll", check);
-        window.removeEventListener("resize", check);
-      }
-    };
-
-    check();
-    window.addEventListener("scroll", check, { passive: true });
-    window.addEventListener("resize", check);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", check);
-      window.removeEventListener("resize", check);
-    };
+    return onEnterView(el, () => setActive(true));
   }, []);
 
   return (

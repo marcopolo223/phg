@@ -106,7 +106,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col bg-cream text-brown">
         <Header />
-        <main className="flex-1 overflow-x-hidden">{children}</main>
+        <main className="flex-1 overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

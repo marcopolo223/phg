@@ -13,7 +13,6 @@ const left = [
 const right = [
   { href: "/contact-prince", label: "Contact Prince" },
   { href: site.instagram, label: "Instagram", external: true },
-  { href: site.compass, label: "Compass Active Listings", external: true },
 ];
 
 export function Footer() {
@@ -66,6 +65,9 @@ export function Footer() {
               </Link>
             ),
           )}
+          <span className="nav-link pointer-events-none w-fit py-1.5 md:ml-auto">
+            Compass Active Listings
+          </span>
           <p className="mt-5 font-label text-[11px] tracking-[0.14em] text-cream/60 md:mt-6 md:text-[12px]">
             © 2026 Prince Hassan. All rights reserved.
           </p>
