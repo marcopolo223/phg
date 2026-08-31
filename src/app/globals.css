@@ -70,12 +70,19 @@ body {
   letter-spacing: 0.06em;
 }
 
+.font-label {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
 .nav-link {
-  font-family: var(--font-display), Impact, sans-serif;
-  font-size: 16px;
-  font-weight: 700;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
   line-height: 1.5;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--brown);
   text-decoration-thickness: 1px;
@@ -90,8 +97,8 @@ body {
 
 footer .nav-link {
   color: var(--cream);
-  font-size: 16px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  letter-spacing: 0.16em;
 }
 
 footer a.nav-link {
@@ -107,9 +114,9 @@ footer a.nav-link:hover {
 #mobile-nav .nav-link {
   display: block;
   width: 100%;
-  font-size: clamp(1.7rem, 6.8vw, 2.4rem);
-  letter-spacing: 0.08em;
-  line-height: 1.15;
+  font-size: clamp(1.05rem, 4.2vw, 1.35rem);
+  letter-spacing: 0.18em;
+  line-height: 1.35;
   text-align: center;
   text-underline-offset: 0.22em;
 }
@@ -152,17 +159,15 @@ footer a.nav-link:hover {
 
 .reveal {
   opacity: 0;
-  transform: translateY(36px);
+  transform: translateY(28px);
   transition:
-    opacity 2s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 2s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+    opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
-  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -170,6 +175,12 @@ footer a.nav-link:hover {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .marquee-track,
+  .past-marquee-track,
+  .testimonial-marquee-track {
+    animation: none;
   }
 }
 
@@ -364,15 +375,15 @@ footer a.nav-link:hover {
   padding-bottom: 2rem;
   column-gap: 11px;
   row-gap: 11px;
-  overflow-x: clip;
+  overflow-x: hidden;
   grid-template-columns: repeat(8, minmax(0, 1fr));
-  grid-template-rows: repeat(82, minmax(22px, auto));
+  grid-template-rows: repeat(100, minmax(26px, auto));
 }
 
 .mkt-photo {
   position: relative;
   overflow: hidden;
-  min-height: 58vw;
+  min-height: 78vw;
   z-index: 1;
 }
 
@@ -397,92 +408,100 @@ footer a.nav-link:hover {
   text-align: center;
 }
 
+.mkt-name {
+  align-items: flex-end;
+  padding-inline: 6%;
+  padding-bottom: 0.35rem;
+}
+
+.mkt-copy {
+  align-items: flex-start;
+  padding-inline: 8%;
+  padding-top: 0.15rem;
+  padding-bottom: 1.1rem;
+}
+
+.mkt-name h2 {
+  font-size: clamp(1.45rem, 7vw, 2.15rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+}
+
+.mkt-copy p {
+  max-width: 22rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
 .mkt-miami-photo {
-  grid-area: 1 / 1 / 10 / 9;
+  grid-area: 1 / 1 / 13 / 9;
 }
 .mkt-miami-name {
-  grid-area: 5 / 1 / 8 / 9;
-  justify-content: center;
-  text-align: center;
+  grid-area: 7 / 1 / 10 / 9;
 }
 .mkt-miami-copy {
-  grid-area: 7 / 1 / 10 / 9;
-  justify-content: center;
-  text-align: center;
-  padding-inline: 8%;
+  grid-area: 10 / 1 / 13 / 9;
 }
 
 .mkt-ftl-photo {
-  grid-area: 12 / 1 / 21 / 9;
+  grid-area: 15 / 1 / 27 / 9;
 }
 .mkt-ftl-name {
-  grid-area: 16 / 1 / 19 / 9;
-  padding-inline: 4%;
+  grid-area: 21 / 1 / 24 / 9;
 }
 .mkt-ftl-copy {
-  grid-area: 18 / 1 / 21 / 9;
-  padding-inline: 4%;
+  grid-area: 24 / 1 / 27 / 9;
 }
 
 .mkt-man-photo {
-  grid-area: 23 / 1 / 35 / 9;
-  min-height: 72vw;
+  grid-area: 29 / 1 / 43 / 9;
+  min-height: 88vw;
 }
 .mkt-man-name {
-  grid-area: 29 / 1 / 32 / 9;
-  padding-inline: 6%;
+  grid-area: 36 / 1 / 39 / 9;
 }
 .mkt-man-copy {
-  grid-area: 32 / 1 / 35 / 9;
-  padding-inline: 6%;
+  grid-area: 39 / 1 / 43 / 9;
 }
 
 .mkt-pb-photo {
-  grid-area: 37 / 1 / 46 / 9;
+  grid-area: 45 / 1 / 57 / 9;
 }
 .mkt-pb-name {
-  grid-area: 41 / 1 / 44 / 9;
-  padding-inline: 6%;
+  grid-area: 51 / 1 / 54 / 9;
 }
 .mkt-pb-copy {
-  grid-area: 43 / 1 / 46 / 9;
-  padding-inline: 6%;
+  grid-area: 54 / 1 / 57 / 9;
 }
 
 .mkt-hp-photo {
-  grid-area: 48 / 1 / 57 / 9;
+  grid-area: 59 / 1 / 71 / 9;
 }
 .mkt-hp-name {
-  grid-area: 52 / 1 / 55 / 9;
-  padding-inline: 6%;
+  grid-area: 65 / 1 / 68 / 9;
 }
 .mkt-hp-copy {
-  grid-area: 54 / 1 / 57 / 9;
-  padding-inline: 6%;
+  grid-area: 68 / 1 / 71 / 9;
 }
 
 .mkt-hou-photo {
-  grid-area: 59 / 1 / 68 / 9;
+  grid-area: 73 / 1 / 85 / 9;
 }
 .mkt-hou-name {
-  grid-area: 63 / 1 / 66 / 9;
-  padding-inline: 6%;
+  grid-area: 79 / 1 / 82 / 9;
 }
 .mkt-hou-copy {
-  grid-area: 65 / 1 / 68 / 9;
-  padding-inline: 6%;
+  grid-area: 82 / 1 / 85 / 9;
 }
 
 .mkt-nj-photo {
-  grid-area: 70 / 1 / 79 / 9;
+  grid-area: 87 / 1 / 99 / 9;
 }
 .mkt-nj-name {
-  grid-area: 74 / 1 / 77 / 9;
-  padding-inline: 6%;
+  grid-area: 93 / 1 / 96 / 9;
 }
 .mkt-nj-copy {
-  grid-area: 76 / 1 / 79 / 9;
-  padding-inline: 6%;
+  grid-area: 96 / 1 / 99 / 9;
 }
 
 .past-marquee,
@@ -510,19 +529,36 @@ footer a.nav-link:hover {
 .past-marquee-track,
 .testimonial-marquee-track {
   display: flex;
+  flex-wrap: nowrap;
   width: max-content;
   gap: 20px;
   will-change: transform;
+  animation: marquee 48s linear infinite;
+}
+
+.past-marquee-track.is-measured,
+.testimonial-marquee-track.is-measured {
+  animation: none;
+}
+
+.past-marquee-track > div,
+.testimonial-marquee-track > div {
+  display: flex;
+  flex-wrap: nowrap;
+  flex: 0 0 auto;
+  width: max-content;
+  gap: 20px;
 }
 
 .past-marquee-card {
-  flex: 0 0 min(86vw, 28rem);
+  flex: none;
+  width: min(86vw, 28rem);
   text-align: center;
 }
 
 .testimonial-card {
   box-sizing: border-box;
-  flex: 0 0 min(88vw, 40rem);
+  flex: none;
   width: min(88vw, 40rem);
   max-width: calc(100vw - 2.5rem);
   padding-inline: 1rem;
@@ -565,6 +601,26 @@ footer a.nav-link:hover {
 
   .mkt-photo {
     min-height: 0;
+  }
+
+  .mkt-name {
+    padding-bottom: 0;
+  }
+
+  .mkt-copy {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .mkt-name h2 {
+    font-size: clamp(1.7rem, 8.4vw, 5.2rem);
+    letter-spacing: 0.06em;
+  }
+
+  .mkt-copy p {
+    max-width: 22rem;
+    font-size: 1.12rem;
+    line-height: 1.7;
   }
 
   .mkt-miami-photo {
@@ -669,13 +725,13 @@ footer a.nav-link:hover {
   }
 
   .past-marquee-card {
-    flex-basis: min(48vw, 34rem);
+    width: min(48vw, 34rem);
     text-align: left;
   }
 }
 
 @media (min-width: 1100px) {
   .past-marquee-card {
-    flex-basis: min(36vw, 32rem);
+    width: min(36vw, 32rem);
   }
 }

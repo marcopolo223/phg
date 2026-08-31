@@ -31,7 +31,7 @@ export function Footer() {
         <div className="order-first flex flex-col items-center justify-center gap-4 md:order-none md:col-start-2 md:row-start-1 md:flex-row md:gap-8">
           <div className="text-center">
             <Wordmark size="footer" className="text-cream" />
-            <p className="mt-3 font-display text-[12px] uppercase tracking-[0.2em] text-cream/80 md:mt-4 md:text-[14px]">
+            <p className="mt-3 font-label text-[12px] text-cream/80 md:mt-4 md:text-[14px]">
               Precision · Pulse · Presence
             </p>
           </div>
@@ -66,7 +66,7 @@ export function Footer() {
               </Link>
             ),
           )}
-          <p className="mt-5 font-display text-[11px] uppercase tracking-[0.14em] text-cream/60 md:mt-6 md:text-[12px]">
+          <p className="mt-5 font-label text-[11px] tracking-[0.14em] text-cream/60 md:mt-6 md:text-[12px]">
             © 2026 Prince Hassan. All rights reserved.
           </p>
         </div>

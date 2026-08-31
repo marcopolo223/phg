@@ -22,9 +22,9 @@ export default function HomePage() {
         </Reveal>
 
         <div className="mt-16 grid items-start gap-12 md:mt-32 md:grid-cols-2 md:gap-x-16 md:gap-y-28 lg:gap-x-20">
-          <Reveal>
+          <Reveal className="order-2 md:order-1">
             <div>
-              <p className="text-[14px] tracking-[0.2em] uppercase text-[#8c735e] md:text-[15px]">
+              <p className="font-label text-[14px] tracking-[0.2em] text-[#8c735e] md:text-[15px]">
                 Meet Prince:
               </p>
               <div className="mt-7 space-y-7 text-[1.05rem] leading-[1.9] text-brown md:text-[1.12rem]">
@@ -56,7 +56,7 @@ export default function HomePage() {
               </p>
             </div>
           </Reveal>
-          <Reveal delay={160}>
+          <Reveal delay={160} className="order-1 md:order-2">
             <Image
               src="/images/home/prince-portrait.webp"
               alt="Prince Hassan"
@@ -66,7 +66,7 @@ export default function HomePage() {
             />
           </Reveal>
 
-          <Reveal>
+          <Reveal className="order-4 md:order-3">
             <Image
               src="/images/home/graphic.webp"
               alt=""
@@ -75,7 +75,7 @@ export default function HomePage() {
               className="aspect-[4/5] w-full object-cover"
             />
           </Reveal>
-          <Reveal delay={160} className="self-center">
+          <Reveal delay={160} className="order-3 self-center md:order-4">
             <h2 className="text-center font-serif text-[clamp(2.05rem,8vw,6.4rem)] leading-[0.92] tracking-tight text-brown md:pl-8 md:text-left lg:pl-14">
               CLOSING DEALS,
               <br />

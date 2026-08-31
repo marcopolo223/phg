@@ -2,6 +2,12 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
+function isInViewport(el: HTMLElement) {
+  const rect = el.getBoundingClientRect();
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  return rect.bottom > 24 && rect.top < vh - 24;
+}
+
 export function Reveal({
   children,
   className = "",
@@ -18,18 +24,44 @@ export function Reveal({
     const el = ref.current;
     if (!el) return;
 
+    let shown = false;
+    const show = () => {
+      if (shown) return;
+      shown = true;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setVisible(true));
+      });
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
+          show();
           observer.disconnect();
         }
       },
-      { threshold: 0.08, rootMargin: "0px 0px -4% 0px" },
+      { threshold: 0, rootMargin: "40px 0px -6% 0px" },
     );
-
     observer.observe(el);
-    return () => observer.disconnect();
+
+    const check = () => {
+      if (isInViewport(el)) {
+        show();
+        observer.disconnect();
+        window.removeEventListener("scroll", check);
+        window.removeEventListener("resize", check);
+      }
+    };
+
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
   }, []);
 
   return (

@@ -103,7 +103,7 @@ function StatValue({
   }, [active, amount, delay]);
 
   return (
-    <p className="mt-4 font-serif text-[clamp(1.7rem,6vw,4.1rem)] tracking-tight text-brown tabular-nums">
+    <p className="mt-4 font-display text-[clamp(1.7rem,6vw,4.1rem)] tracking-tight text-brown tabular-nums">
       {prefix}
       {display}
       {suffix}
@@ -119,7 +119,13 @@ export function StatsCounter() {
     const el = ref.current;
     if (!el) return;
 
-    const activate = () => setActive(true);
+    let started = false;
+    const activate = () => {
+      if (started) return;
+      started = true;
+      setActive(true);
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -127,14 +133,30 @@ export function StatsCounter() {
           observer.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "80px 0px" },
+      { threshold: 0, rootMargin: "120px 0px" },
     );
     observer.observe(el);
 
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) activate();
+    const check = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      if (rect.top < vh && rect.bottom > 0) {
+        activate();
+        observer.disconnect();
+        window.removeEventListener("scroll", check);
+        window.removeEventListener("resize", check);
+      }
+    };
 
-    return () => observer.disconnect();
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
   }, []);
 
   return (
@@ -145,7 +167,7 @@ export function StatsCounter() {
       <div className="grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-6">
         {stats.map((item, i) => (
           <div key={item.label} className="text-center">
-            <p className="font-display text-[12px] uppercase tracking-[0.1em] text-brown sm:text-[14px] sm:tracking-[0.2em] md:text-[15px]">
+            <p className="font-label text-[12px] tracking-[0.1em] text-brown sm:text-[14px] sm:tracking-[0.2em] md:text-[15px]">
               {item.label}
             </p>
             <StatValue
@@ -157,7 +179,7 @@ export function StatsCounter() {
             />
             <div className="mx-auto mt-4 h-px w-11 bg-brown/35" />
             {item.lines ? (
-              <p className="mt-4 font-display text-[11px] uppercase leading-[1.7] tracking-[0.08em] text-brown sm:text-[13px] sm:tracking-[0.18em] md:text-[14px]">
+              <p className="mt-4 font-label text-[11px] leading-[1.7] tracking-[0.08em] text-brown sm:text-[13px] sm:tracking-[0.18em] md:text-[14px]">
                 {item.lines.map((line) => (
                   <span key={line} className="block">
                     {line}
@@ -165,7 +187,7 @@ export function StatsCounter() {
                 ))}
               </p>
             ) : (
-              <p className="mx-auto mt-4 max-w-[14ch] font-display text-[11px] uppercase leading-[1.7] tracking-[0.08em] text-brown sm:text-[13px] sm:tracking-[0.18em] md:text-[14px]">
+              <p className="mx-auto mt-4 max-w-[14ch] font-label text-[11px] leading-[1.7] tracking-[0.08em] text-brown sm:text-[13px] sm:tracking-[0.18em] md:text-[14px]">
                 {item.detail}
               </p>
             )}

@@ -14,7 +14,7 @@ export function ContinueStrip({
     <section className="px-5 py-20 md:px-12 md:py-28">
       <Reveal>
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-display text-[13px] uppercase tracking-[0.22em] text-brown/70">
+          <p className="font-label text-[13px] tracking-[0.22em] text-brown/70">
             {kicker}
           </p>
           <Link

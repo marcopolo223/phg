@@ -20,15 +20,36 @@ export function useDragMarquee(speedPx = 28) {
     const group = groupRef.current;
     const track = trackRef.current;
     if (!group) return;
-    const style = window.getComputedStyle(track ?? group);
-    const gap = Number.parseFloat(style.columnGap || style.gap || "0") || 0;
-    const width = group.scrollWidth || group.offsetWidth;
-    if (width > 0) loopRef.current = width + gap;
+
+    const groupStyle = window.getComputedStyle(group);
+    const trackStyle = window.getComputedStyle(track ?? group);
+    const groupGap =
+      Number.parseFloat(groupStyle.columnGap || groupStyle.gap || "0") || 0;
+    const trackGap =
+      Number.parseFloat(trackStyle.columnGap || trackStyle.gap || "0") || 0;
+
+    const children = Array.from(group.children) as HTMLElement[];
+    const fromChildren = children.reduce((sum, child, i) => {
+      const width = child.getBoundingClientRect().width;
+      return sum + width + (i < children.length - 1 ? groupGap : 0);
+    }, 0);
+
+    const width =
+      fromChildren ||
+      group.getBoundingClientRect().width ||
+      group.scrollWidth ||
+      group.offsetWidth;
+
+    if (width > 1) {
+      loopRef.current = width + trackGap;
+      track?.classList.add("is-measured");
+    }
   }, []);
 
   useEffect(() => {
     measure();
     const frame = window.requestAnimationFrame(measure);
+    const later = window.setTimeout(measure, 400);
     const group = groupRef.current;
     const track = trackRef.current;
     const viewport = viewportRef.current;
@@ -47,6 +68,7 @@ export function useDragMarquee(speedPx = 28) {
 
     return () => {
       window.cancelAnimationFrame(frame);
+      window.clearTimeout(later);
       ro.disconnect();
       window.removeEventListener("resize", measure);
       images.forEach((img) => img.removeEventListener("load", onLoad));
@@ -72,11 +94,11 @@ export function useDragMarquee(speedPx = 28) {
       if (loop > 0) {
         while (offsetRef.current <= -loop) offsetRef.current += loop;
         while (offsetRef.current > 0) offsetRef.current -= loop;
+        if (trackRef.current) {
+          trackRef.current.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
+        }
       }
 
-      if (trackRef.current) {
-        trackRef.current.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
-      }
       frameRef.current = requestAnimationFrame(tick);
     };
 

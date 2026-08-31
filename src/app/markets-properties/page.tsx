@@ -165,7 +165,7 @@ export default function MarketsPage() {
             key={`${market.name}-name`}
             className={`mkt-name ${market.nameClass} flex items-end`}
           >
-            <h2 className="w-full text-center font-display text-[clamp(1.7rem,8.4vw,5.2rem)] leading-none tracking-wide text-cream drop-shadow-[0_1px_12px_rgba(0,0,0,0.45)]">
+            <h2 className="w-full text-center font-display text-[clamp(1.45rem,6.8vw,2.1rem)] leading-[0.95] tracking-wide text-cream drop-shadow-[0_1px_12px_rgba(0,0,0,0.45)] md:text-[clamp(1.7rem,8.4vw,5.2rem)] md:leading-none">
               {market.name}
             </h2>
           </Reveal>
@@ -175,7 +175,7 @@ export default function MarketsPage() {
             key={`${market.name}-copy`}
             className={`mkt-copy ${market.copyClass} flex items-start`}
           >
-            <p className="mx-auto max-w-[22rem] text-center text-[1.02rem] leading-[1.7] text-cream drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)] md:text-[1.12rem]">
+            <p className="mx-auto max-w-[20rem] text-center text-[0.95rem] leading-[1.45] text-cream drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)] md:max-w-[22rem] md:text-[1.12rem] md:leading-[1.7]">
               {market.copy}
             </p>
           </Reveal>

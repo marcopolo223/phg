@@ -47,7 +47,7 @@ function QuoteCard({ item }: { item: (typeof quotes)[number] }) {
         <p className="font-quote text-[1.25rem] leading-[1.75] text-brown md:text-[1.5rem] md:leading-[1.8]">
           “{item.body}”
         </p>
-        <footer className="mt-8 font-display text-[13px] uppercase tracking-[0.16em] text-brown/80 md:mt-10 md:text-[14px]">
+        <footer className="mt-8 font-label text-[13px] tracking-[0.16em] text-brown/80 md:mt-10 md:text-[14px]">
           {item.name}
         </footer>
       </blockquote>
