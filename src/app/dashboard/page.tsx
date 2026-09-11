@@ -36,8 +36,8 @@ export default async function DashboardPage() {
           Studio
         </h1>
         <p className="mt-4 max-w-xl text-[1.02rem] leading-[1.8] text-brown/75">
-          Markets, listings, past transactions, and overheard notes — in the
-          same language as the site.
+          Markets, listings, past transactions, and overheard notes. Hide keeps
+          an item in Studio without showing it on the site. Remove deletes it.
         </p>
         <div className="mt-12 md:mt-16">
           <DashboardClient

@@ -3,12 +3,12 @@ import { ContinueStrip } from "@/components/continue-strip";
 import { HeroVideo } from "@/components/hero-video";
 import { PastTransactionsMarquee } from "@/components/past-transactions-marquee";
 import { Reveal } from "@/components/reveal";
-import { getContent } from "@/lib/content";
+import { getPublicContent } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const { listings } = await getContent();
+  const { listings } = await getPublicContent();
 
   return (
     <>
@@ -35,30 +35,36 @@ export default async function HomePage() {
               </p>
               <div className="mt-7 space-y-6 text-[1rem] leading-[1.8] text-brown md:text-[1.05rem]">
                 <p>
-                  Twenty-eight. Nearly a decade in the field. Close to{" "}
-                  <em className="italic">$80 million</em> closed across Miami,
-                  Fort Lauderdale, Manhattan, and the Hamptons.
+                  At twenty-eight, with nearly a decade in real estate, Prince
+                  Hassan has closed close to $80 million in transactions across
+                  Miami, Fort Lauderdale, Manhattan, and the Hamptons.
                 </p>
                 <p>
-                  He came up through an invitation-only track, working beside
-                  founders as the practice expanded into the Hamptons, Aspen,
-                  Manhattan, Miami, Orange County, and the Bahamas. The rooms
-                  stayed with him. The method is now his own.
+                  He joined OFFICIAL through PRODIGY, the firm&apos;s
+                  invitation-only track for high-performing agents, where he
+                  worked alongside founders and senior leadership as the company
+                  expanded into key luxury markets, including the Hamptons,
+                  Aspen, Manhattan, Miami, Orange County, and the Bahamas.
                 </p>
                 <p>
-                  Before the industry had a title for him, he had already closed
-                  more than 300 transactions at the University of Miami and led
-                  a fourteen-person team by graduation.
+                  Before formally entering the industry, he had already built
+                  what most agents spend years trying to achieve—closing more
+                  than 300 transactions while still at the University of Miami
+                  Herbert Business School and leading a fourteen-person team by
+                  graduation.
                 </p>
                 <p>
-                  Today the advisory is a private office: a select circle,
-                  direct access, no handoffs — from South of Fifth oceanfront
-                  to custom estates in Coral Gables, and the portfolios that
-                  connect them.
+                  Today, his advisory operates with a private-office model: a
+                  select client base, direct access, and no handoffs. He has
+                  closed at leading design-driven properties including Elysée,
+                  Missoni, and Faena, and advises buyers, sellers, investors,
+                  and multigenerational families on acquisitions ranging from
+                  South of Fifth oceanfront condominiums to custom estates in
+                  Coral Gables—and the portfolios that connect them.
                 </p>
               </div>
               <p className="mt-12 text-[14px] tracking-[0.16em] uppercase text-brown-ink md:text-[15px]">
-                Every deal is a seal in a larger legacy.
+                For Prince, every deal is a seal in a larger legacy.
               </p>
             </div>
           </Reveal>

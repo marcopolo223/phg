@@ -6,6 +6,7 @@ export type Market = {
   name: string;
   copy: string;
   image: string;
+  hidden: boolean;
 };
 
 export type Deal = {
@@ -13,12 +14,14 @@ export type Deal = {
   title: string;
   copy: string;
   image: string;
+  hidden: boolean;
 };
 
 export type Quote = {
   id: string;
   name: string;
   body: string;
+  hidden: boolean;
 };
 
 export type Listing = {
@@ -26,6 +29,7 @@ export type Listing = {
   title: string;
   copy: string;
   image: string;
+  hidden: boolean;
 };
 
 export type SiteContent = {
@@ -39,19 +43,33 @@ const EMPTY: SiteContent = { markets: [], deals: [], quotes: [], listings: [] };
 const FILE = path.join(process.cwd(), "data", "content.json");
 const UPLOADS = path.join(process.cwd(), "public", "uploads");
 
+function withHidden<T extends { hidden?: boolean }>(items: T[]): (T & { hidden: boolean })[] {
+  return items.map((item) => ({ ...item, hidden: Boolean(item.hidden) }));
+}
+
 export async function getContent(): Promise<SiteContent> {
   try {
     const raw = await readFile(FILE, "utf8");
     const parsed = JSON.parse(raw) as Partial<SiteContent>;
     return {
-      markets: Array.isArray(parsed.markets) ? parsed.markets : [],
-      deals: Array.isArray(parsed.deals) ? parsed.deals : [],
-      quotes: Array.isArray(parsed.quotes) ? parsed.quotes : [],
-      listings: Array.isArray(parsed.listings) ? parsed.listings : [],
+      markets: withHidden(Array.isArray(parsed.markets) ? parsed.markets : []),
+      deals: withHidden(Array.isArray(parsed.deals) ? parsed.deals : []),
+      quotes: withHidden(Array.isArray(parsed.quotes) ? parsed.quotes : []),
+      listings: withHidden(Array.isArray(parsed.listings) ? parsed.listings : []),
     };
   } catch {
     return EMPTY;
   }
+}
+
+export async function getPublicContent(): Promise<SiteContent> {
+  const content = await getContent();
+  return {
+    markets: content.markets.filter((item) => !item.hidden),
+    deals: content.deals.filter((item) => !item.hidden),
+    quotes: content.quotes.filter((item) => !item.hidden),
+    listings: content.listings.filter((item) => !item.hidden),
+  };
 }
 
 export async function saveContent(content: SiteContent) {

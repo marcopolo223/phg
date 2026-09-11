@@ -10,6 +10,7 @@ import {
   removeListing,
   removeMarket,
   removeQuote,
+  toggleHidden,
   type ContentState,
 } from "@/app/actions/content";
 import { ImageCropField } from "@/components/image-crop-field";
@@ -86,6 +87,63 @@ function RemoveButton({ label }: { label: string }) {
   );
 }
 
+function VisibilityActions({
+  id,
+  kind,
+  hidden,
+  removeAction,
+  confirm,
+  tone = "ink",
+}: {
+  id: string;
+  kind: "markets" | "deals" | "listings" | "quotes";
+  hidden: boolean;
+  removeAction: (formData: FormData) => void | Promise<void>;
+  confirm: string;
+  tone?: "ink" | "cream";
+}) {
+  const link =
+    tone === "cream"
+      ? "font-label text-[11px] tracking-[0.16em] text-cream underline decoration-cream/50 underline-offset-[0.32em]"
+      : "nav-link";
+
+  return (
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+      {hidden ? (
+        <span
+          className={`font-label text-[10px] tracking-[0.16em] ${
+            tone === "cream" ? "text-cream" : "text-brown/55"
+          }`}
+        >
+          Hidden
+        </span>
+      ) : null}
+      <form action={toggleHidden}>
+        <input type="hidden" name="id" value={id} />
+        <input type="hidden" name="kind" value={kind} />
+        <button type="submit" className={link}>
+          {hidden ? "Show" : "Hide"}
+        </button>
+      </form>
+      <form
+        action={removeAction}
+        onSubmit={(event) => {
+          if (!window.confirm(confirm)) event.preventDefault();
+        }}
+      >
+        <input type="hidden" name="id" value={id} />
+        {tone === "cream" ? (
+          <RemoveButton label="Remove" />
+        ) : (
+          <button type="submit" className="nav-link">
+            Remove
+          </button>
+        )}
+      </form>
+    </div>
+  );
+}
+
 function MarketsPanel({ markets }: { markets: Market[] }) {
   const formRef = useRef<HTMLFormElement>(null);
   const [state, action, pending] = useActionState(
@@ -129,7 +187,12 @@ function MarketsPanel({ markets }: { markets: Market[] }) {
       {markets.length ? (
         <ul className="grid gap-3 sm:grid-cols-2">
           {markets.map((market) => (
-            <li key={market.id} className="relative aspect-[4/3] overflow-hidden">
+            <li
+              key={market.id}
+              className={`relative aspect-[4/3] overflow-hidden ${
+                market.hidden ? "opacity-55" : ""
+              }`}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={market.image}
@@ -145,18 +208,16 @@ function MarketsPanel({ markets }: { markets: Market[] }) {
                   {market.copy}
                 </p>
               </div>
-              <form
-                action={removeMarket}
-                className="absolute right-4 top-4"
-                onSubmit={(event) => {
-                  if (!confirm("Remove this market from the site?")) {
-                    event.preventDefault();
-                  }
-                }}
-              >
-                <input type="hidden" name="id" value={market.id} />
-                <RemoveButton label="Remove" />
-              </form>
+              <div className="absolute right-4 top-4">
+                <VisibilityActions
+                  id={market.id}
+                  kind="markets"
+                  hidden={market.hidden}
+                  removeAction={removeMarket}
+                  confirm="Remove this market from the site?"
+                  tone="cream"
+                />
+              </div>
             </li>
           ))}
         </ul>
@@ -169,10 +230,18 @@ function MarketsPanel({ markets }: { markets: Market[] }) {
 
 function DealList({
   items,
+  kind,
   onRemove,
   confirm,
 }: {
-  items: Array<{ id: string; title: string; copy: string; image: string }>;
+  items: Array<{
+    id: string;
+    title: string;
+    copy: string;
+    image: string;
+    hidden: boolean;
+  }>;
+  kind: "deals" | "listings";
   onRemove: (formData: FormData) => void | Promise<void>;
   confirm: string;
 }) {
@@ -185,7 +254,7 @@ function DealList({
   return (
     <ul className="grid gap-10 sm:grid-cols-2">
       {items.map((item) => (
-        <li key={item.id}>
+        <li key={item.id} className={item.hidden ? "opacity-55" : ""}>
           <div className="relative aspect-square overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -200,18 +269,15 @@ function DealList({
           <p className="mt-2 text-[0.95rem] leading-relaxed text-brown/75">
             {item.copy}
           </p>
-          <form
-            action={onRemove}
-            className="mt-4"
-            onSubmit={(event) => {
-              if (!window.confirm(confirm)) event.preventDefault();
-            }}
-          >
-            <input type="hidden" name="id" value={item.id} />
-            <button type="submit" className="nav-link">
-              Remove
-            </button>
-          </form>
+          <div className="mt-4">
+            <VisibilityActions
+              id={item.id}
+              kind={kind}
+              hidden={item.hidden}
+              removeAction={onRemove}
+              confirm={confirm}
+            />
+          </div>
         </li>
       ))}
     </ul>
@@ -258,6 +324,7 @@ function DealsPanel({ deals }: { deals: Deal[] }) {
       </form>
       <DealList
         items={deals}
+        kind="deals"
         onRemove={removeDeal}
         confirm="Remove this transaction from the site?"
       />
@@ -305,6 +372,7 @@ function ListingsPanel({ listings }: { listings: Listing[] }) {
       </form>
       <DealList
         items={listings}
+        kind="listings"
         onRemove={removeListing}
         confirm="Remove this listing from the site?"
       />
@@ -355,7 +423,12 @@ function QuotesPanel({ quotes }: { quotes: Quote[] }) {
       {quotes.length ? (
         <ul className="space-y-10">
           {quotes.map((quote) => (
-            <li key={quote.id} className="border-b border-brown/15 pb-10">
+            <li
+              key={quote.id}
+              className={`border-b border-brown/15 pb-10 ${
+                quote.hidden ? "opacity-55" : ""
+              }`}
+            >
               <p className="font-quote text-[1.2rem] leading-relaxed md:text-[1.35rem]">
                 “{quote.body}”
               </p>
@@ -363,19 +436,13 @@ function QuotesPanel({ quotes }: { quotes: Quote[] }) {
                 <p className="font-label text-[11px] tracking-[0.16em] text-brown/70">
                   {quote.name}
                 </p>
-                <form
-                  action={removeQuote}
-                  onSubmit={(event) => {
-                    if (!confirm("Remove this note from the site?")) {
-                      event.preventDefault();
-                    }
-                  }}
-                >
-                  <input type="hidden" name="id" value={quote.id} />
-                  <button type="submit" className="nav-link">
-                    Remove
-                  </button>
-                </form>
+                <VisibilityActions
+                  id={quote.id}
+                  kind="quotes"
+                  hidden={quote.hidden}
+                  removeAction={removeQuote}
+                  confirm="Remove this note from the site?"
+                />
               </div>
             </li>
           ))}

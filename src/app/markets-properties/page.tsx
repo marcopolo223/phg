@@ -4,7 +4,7 @@ import { ContinueStrip } from "@/components/continue-strip";
 import { MarketsGrid } from "@/components/markets-grid";
 import { PastTransactionsMarquee } from "@/components/past-transactions-marquee";
 import { Reveal } from "@/components/reveal";
-import { getContent } from "@/lib/content";
+import { getPublicContent } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function MarketsPage() {
-  const { markets, deals } = await getContent();
+  const { markets, deals } = await getPublicContent();
 
   return (
     <>
