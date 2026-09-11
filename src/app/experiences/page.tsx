@@ -24,10 +24,10 @@ export default function ExperiencesPage() {
           <p className="font-display text-[15px] uppercase tracking-[0.22em] text-brown">
             Experiences
           </p>
-          <h1 className="mt-6 font-serif text-[clamp(2.4rem,8vw,5.4rem)] uppercase leading-[0.92] tracking-tight text-brown">
+          <h1 className="mt-6 font-serif text-[clamp(1.85rem,5.5vw,3.25rem)] uppercase leading-[0.95] tracking-tight text-brown">
             Coming soon
           </h1>
-          <p className="mx-auto mt-8 max-w-md text-[1.08rem] leading-[1.9] text-brown md:text-[1.15rem]">
+          <p className="mx-auto mt-8 max-w-md text-[1rem] leading-[1.8] text-brown md:text-[1.05rem]">
             A private calendar of rooms, tables, and landscapes — released in
             season, and only by introduction.
           </p>

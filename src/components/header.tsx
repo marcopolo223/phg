@@ -73,7 +73,7 @@ export function Header() {
             aria-modal="true"
             aria-label="Site menu"
           >
-            <div className="flex items-center justify-between px-[max(1.25rem,env(safe-area-inset-left))] py-3 pr-[max(1.25rem,env(safe-area-inset-right))] pt-[max(0.75rem,env(safe-area-inset-top))]">
+            <div className="flex items-center justify-between px-[max(1.25rem,env(safe-area-inset-left))] py-4 pr-[max(1.25rem,env(safe-area-inset-right))] pt-[max(1rem,env(safe-area-inset-top))]">
               <Link
                 href="/"
                 aria-label="Prince Hassan Group home"
@@ -128,7 +128,7 @@ export function Header() {
           : "sticky top-0 z-[100] border-b border-line/70 bg-cream/95 backdrop-blur-md"
       }
     >
-      <div className="mx-auto flex w-full max-w-[1800px] items-center justify-between gap-4 px-[max(1.25rem,env(safe-area-inset-left))] py-3 pr-[max(1.25rem,env(safe-area-inset-right))] pt-[max(0.75rem,env(safe-area-inset-top))] md:gap-6 md:px-16 md:py-5 lg:px-20">
+      <div className="mx-auto flex w-full max-w-[1800px] items-center justify-between gap-4 px-[max(1.25rem,env(safe-area-inset-left))] py-4 pr-[max(1.25rem,env(safe-area-inset-right))] pt-[max(1rem,env(safe-area-inset-top))] md:gap-6 md:px-16 md:py-5 lg:px-20">
         <Link
           href="/"
           aria-label="Prince Hassan Group home"

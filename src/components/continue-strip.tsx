@@ -11,7 +11,7 @@ export function ContinueStrip({
   label: string;
 }) {
   return (
-    <section className="px-5 py-20 md:px-12 md:py-28">
+    <section className="px-5 py-16 md:px-12 md:py-20">
       <Reveal>
         <div className="mx-auto max-w-2xl text-center">
           <p className="font-label text-[13px] tracking-[0.22em] text-brown/70">
@@ -19,7 +19,7 @@ export function ContinueStrip({
           </p>
           <Link
             href={href}
-            className="mt-4 inline-block font-serif text-[clamp(1.7rem,4vw,2.6rem)] uppercase leading-tight tracking-tight text-brown underline decoration-brown/30 underline-offset-[0.28em] transition hover:decoration-brown"
+            className="mt-4 inline-block font-serif text-[clamp(1.45rem,3.2vw,2.05rem)] uppercase leading-tight tracking-tight text-brown underline decoration-brown/30 underline-offset-[0.28em] transition hover:decoration-brown"
           >
             {label}
           </Link>

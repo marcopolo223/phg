@@ -4,6 +4,9 @@ import { ContinueStrip } from "@/components/continue-strip";
 import { Reveal } from "@/components/reveal";
 import { StatsCounter } from "@/components/stats-counter";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
+import { getContent } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Real Estate",
@@ -32,7 +35,9 @@ const audiences = [
   },
 ];
 
-export default function AdvisoryPage() {
+export default async function AdvisoryPage() {
+  const { quotes } = await getContent();
+
   return (
     <>
       <section className="mx-auto grid max-w-[1680px] items-center gap-12 px-5 pb-12 pt-10 md:grid-cols-2 md:gap-16 md:px-12 md:pb-10 md:pt-16 lg:gap-20">
@@ -50,12 +55,12 @@ export default function AdvisoryPage() {
           <p className="text-center font-display text-[15px] uppercase tracking-[0.2em] text-brown md:text-left">
             The practice
           </p>
-          <h1 className="mt-4 text-center font-serif text-[clamp(2.05rem,6.4vw,4.1rem)] uppercase leading-[0.95] tracking-tight text-brown md:text-left">
+          <h1 className="mt-4 text-center font-serif text-[clamp(1.7rem,4.6vw,3.05rem)] uppercase leading-[0.95] tracking-tight text-brown md:text-left">
             Advisory built
             <br />
             to last.
           </h1>
-          <div className="mx-auto mt-10 max-w-xl space-y-8 text-center text-[1.08rem] leading-[2] text-brown md:mx-0 md:text-left md:text-[1.12rem]">
+          <div className="mx-auto mt-10 max-w-xl space-y-6 text-center text-[1rem] leading-[1.8] text-brown md:mx-0 md:text-left md:text-[1.05rem]">
             <p>
               Prince advises a small circle of families who think in{" "}
               <em className="italic">decades</em>, not listing cycles.
@@ -93,7 +98,7 @@ export default function AdvisoryPage() {
           <p className="font-serif text-base uppercase tracking-[0.12em] text-brown">
             Offerings &amp; Services
           </p>
-          <h2 className="mt-4 font-serif text-[clamp(2.15rem,8vw,3.4rem)] uppercase leading-[0.95] text-brown">
+          <h2 className="mt-4 font-serif text-[clamp(1.7rem,5vw,2.5rem)] uppercase leading-[0.95] text-brown">
             Buying.
             <br />
             Selling.
@@ -102,7 +107,7 @@ export default function AdvisoryPage() {
             <br />
             Advisory.
           </h2>
-          <p className="mx-auto mt-8 max-w-xl text-[1.08rem] leading-[2] text-brown md:mx-0 md:text-[1.12rem]">
+          <p className="mx-auto mt-8 max-w-xl text-[1rem] leading-[1.8] text-brown md:mx-0 md:text-[1.05rem]">
             One relationship, the full timeline — from a first apartment to a
             family&apos;s next chapter of land.{" "}
             <em className="italic">Care is the strategy, not a courtesy.</em>
@@ -115,12 +120,12 @@ export default function AdvisoryPage() {
           <p className="text-center font-display text-[13px] uppercase tracking-[0.2em] text-brown/70">
             The difference
           </p>
-          <h2 className="mx-auto mt-5 max-w-4xl text-center font-serif text-[clamp(1.55rem,4.2vw,2.85rem)] leading-[1.28] tracking-tight text-brown">
+          <h2 className="mx-auto mt-5 max-w-4xl text-center font-serif text-[clamp(1.3rem,3vw,2.05rem)] leading-[1.32] tracking-tight text-brown">
             Most of the market is built around the next closing.
             <br className="hidden md:block" /> Prince is built around the next
             decade.
           </h2>
-          <p className="mx-auto mt-8 max-w-2xl text-center text-[1.08rem] leading-[2] text-brown md:text-[1.12rem]">
+          <p className="mx-auto mt-8 max-w-2xl text-center text-[1rem] leading-[1.8] text-brown md:text-[1.05rem]">
             He advises as if the property must still matter to the person who
             inherits it. That is the standard — slower to enter, harder to
             copy, and why the work feels like counsel rather than a chase.
@@ -131,10 +136,10 @@ export default function AdvisoryPage() {
       <section className="mx-auto max-w-[1680px] px-5 pb-24 md:px-12 md:pb-32">
         <div className="grid items-start gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
           <Reveal>
-            <h2 className="font-serif text-[clamp(2.15rem,8vw,3.4rem)] uppercase text-brown">
+            <h2 className="font-serif text-[clamp(1.7rem,5vw,2.5rem)] uppercase text-brown">
               The Advisory
             </h2>
-            <p className="mt-5 max-w-md text-[1.08rem] leading-[2] text-brown md:text-[1.12rem]">
+            <p className="mt-5 max-w-md text-[1rem] leading-[1.8] text-brown md:text-[1.05rem]">
               Clients arrive with different frames. Prince arrives with one
               intention: <em className="italic">to keep what lasts.</em>
             </p>
@@ -161,19 +166,21 @@ export default function AdvisoryPage() {
         </div>
       </section>
 
-      <section className="px-5 py-16 md:px-12 md:py-24">
-        <Reveal>
-          <p className="text-center font-serif text-base uppercase tracking-[0.14em] text-brown">
-            Overheard
-          </p>
-          <h2 className="mt-3 text-center font-serif text-[clamp(2.6rem,12vw,5.5rem)] uppercase tracking-tight text-brown">
-            On Prince—
-          </h2>
-        </Reveal>
-        <div className="mt-14">
-          <TestimonialCarousel />
-        </div>
-      </section>
+      {quotes.length ? (
+        <section className="px-5 py-16 md:px-12 md:py-24">
+          <Reveal>
+            <p className="text-center font-serif text-base uppercase tracking-[0.14em] text-brown">
+              Overheard
+            </p>
+            <h2 className="mt-3 text-center font-serif text-[clamp(2rem,7vw,3.35rem)] uppercase tracking-tight text-brown">
+              On Prince—
+            </h2>
+          </Reveal>
+          <div className="mt-14">
+            <TestimonialCarousel quotes={quotes} />
+          </div>
+        </section>
+      ) : null}
 
       <section className="mx-auto max-w-[1680px] px-5 py-20 md:px-12 md:py-28">
         <div className="grid items-stretch gap-16 md:grid-cols-2 md:gap-20">
@@ -185,15 +192,15 @@ export default function AdvisoryPage() {
               height={1100}
               className="mx-auto mb-10 aspect-[4/5] w-[78%] object-cover md:mx-0 md:w-[82%]"
             />
-            <h3 className="font-serif text-[clamp(1.75rem,6vw,2.35rem)] uppercase text-brown">
+            <h3 className="font-serif text-[clamp(1.45rem,4vw,1.85rem)] uppercase text-brown">
               The Inner Circle
             </h3>
-            <p className="mt-6 leading-[2] text-brown">
+            <p className="mt-6 leading-[1.8] text-brown">
               Twelve families, attended worldwide. Prince tends the real estate
               the way a house is tended at home —{" "}
               <em className="italic">before the need appears.</em>
             </p>
-            <p className="mt-5 leading-[2] text-brown">
+            <p className="mt-5 leading-[1.8] text-brown">
               By introduction. Availability in conversation.
             </p>
             <div className="mt-auto">
@@ -251,15 +258,15 @@ export default function AdvisoryPage() {
               height={1100}
               className="mx-auto mb-10 aspect-[4/5] w-[78%] object-cover md:mx-0 md:w-[82%]"
             />
-            <h3 className="font-serif text-[clamp(1.75rem,6vw,2.35rem)] uppercase text-brown">
+            <h3 className="font-serif text-[clamp(1.45rem,4vw,1.85rem)] uppercase text-brown">
               Portfolio Partnership
             </h3>
-            <p className="mt-6 leading-[2] text-brown">
+            <p className="mt-6 leading-[1.8] text-brown">
               For investors reading a longer map: markets, timing, and the
               rooms where the right asset appears{" "}
               <em className="italic">before it is announced.</em>
             </p>
-            <p className="mt-5 leading-[2] text-brown">
+            <p className="mt-5 leading-[1.8] text-brown">
               By introduction. Availability in conversation.
             </p>
             <div className="mt-auto">

@@ -9,7 +9,13 @@ export type PastDeal = {
   image: string;
 };
 
-export function PastTransactionsMarquee({ deals }: { deals: PastDeal[] }) {
+export function PastTransactionsMarquee({
+  deals,
+  label = "Past transactions",
+}: {
+  deals: PastDeal[];
+  label?: string;
+}) {
   const marquee = useDragMarquee(28);
 
   function renderCards(prefix: string) {
@@ -25,10 +31,10 @@ export function PastTransactionsMarquee({ deals }: { deals: PastDeal[] }) {
             sizes="(min-width: 1024px) 30vw, (min-width: 768px) 42vw, 78vw"
           />
         </div>
-        <h3 className="mx-auto mt-[6%] max-w-[90%] font-serif text-[1.2rem] leading-snug text-brown md:mx-0 md:text-[1.5rem]">
+        <h3 className="mx-auto mt-[6%] max-w-[90%] font-serif text-[1.1rem] leading-snug text-brown md:mx-0 md:text-[1.28rem]">
           {deal.title}
         </h3>
-        <p className="mx-auto mt-3 max-w-[90%] text-[0.98rem] leading-relaxed text-brown md:mx-0 md:text-[1.08rem]">
+        <p className="mx-auto mt-3 max-w-[90%] text-[0.95rem] leading-relaxed text-brown md:mx-0 md:text-[1.02rem]">
           {deal.copy}
         </p>
       </article>
@@ -40,7 +46,7 @@ export function PastTransactionsMarquee({ deals }: { deals: PastDeal[] }) {
       ref={marquee.viewportRef}
       className="past-marquee"
       role="region"
-      aria-label="Past transactions"
+      aria-label={label}
       onPointerDown={marquee.onPointerDown}
       onPointerMove={marquee.onPointerMove}
       onPointerUp={marquee.onPointerUp}

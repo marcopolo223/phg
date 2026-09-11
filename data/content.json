@@ -1,0 +1,145 @@
+{
+  "markets": [
+    {
+      "id": "miami",
+      "name": "MIAMI",
+      "copy": "The seat of Prince's own lineage, and the city that shaped his name.",
+      "image": "/images/markets/miami.jpg"
+    },
+    {
+      "id": "fort-lauderdale",
+      "name": "FORT LAUDERDALE",
+      "copy": "Here the oldest families keep quiet counsel, and Prince has been in the room for years.",
+      "image": "/images/markets/fort-lauderdale.jpg"
+    },
+    {
+      "id": "manhattan",
+      "name": "MANHATTAN",
+      "copy": "Where penthouses open the long horizon of legacy.",
+      "image": "/images/markets/manhattan.jpg"
+    },
+    {
+      "id": "palm-beach",
+      "name": "PALM BEACH",
+      "copy": "Where inherited prestige meets the next chapter of the name.",
+      "image": "/images/markets/palm-beach.jpg"
+    },
+    {
+      "id": "hamptons",
+      "name": "HAMPTONS",
+      "copy": "The next shoreline. Arriving 2027.",
+      "image": "/images/markets/hamptons.jpg"
+    },
+    {
+      "id": "houston",
+      "name": "HOUSTON",
+      "copy": "The next skyline. Spring 2026.",
+      "image": "/images/markets/houston.jpg"
+    },
+    {
+      "id": "orlando",
+      "name": "ORLANDO",
+      "copy": "Where Florida's private lakes keep their own estates.",
+      "image": "/images/markets/orlando.jpg"
+    }
+  ],
+  "deals": [
+    {
+      "id": "south-pointe",
+      "title": "300 S Pointe Dr #2801 — $4,500,000",
+      "copy": "Held off-market at Miami's southernmost point. City, bay, and ocean in one turn.",
+      "image": "/images/properties/south-pointe.jpg"
+    },
+    {
+      "id": "missoni-5201",
+      "title": "Missoni Baia #5201 — $3,250,000",
+      "copy": "Three closings in this building. The bay, the architecture, and a clientele that stays.",
+      "image": "/images/properties/missoni-5201.jpg"
+    },
+    {
+      "id": "windermere",
+      "title": "Windermere FL — $3,150,000",
+      "copy": "Nearly an acre, inside a gated community that does not need to introduce itself.",
+      "image": "/images/properties/windermere.jpg"
+    },
+    {
+      "id": "harbor-inlet",
+      "title": "Fort Lauderdale / Harbor Inlet — $2,800,000",
+      "copy": "A private inlet. Minutes from Harbor Beach, and the coastline that holds Fort Lauderdale.",
+      "image": "/images/properties/harbor-inlet.jpg"
+    },
+    {
+      "id": "first-ave",
+      "title": "695 1st Ave — $2,335,000",
+      "copy": "Richard Meier's first black-glass tower, twenty-eighth floor. The Manhattan skyline, unobstructed.",
+      "image": "/images/properties/first-ave.jpg"
+    },
+    {
+      "id": "425-nw",
+      "title": "425 NW 119th Ave — $2,000,000",
+      "copy": "Five bedrooms on three-quarters of an acre. A compound built to be lived in — not merely held.",
+      "image": "/images/properties/425-nw.jpg"
+    },
+    {
+      "id": "missoni-1703",
+      "title": "Missoni Baia #1703 — $1,880,000",
+      "copy": "A second chapter in the same building. Proof the first was not an accident.",
+      "image": "/images/properties/missoni-1703.jpeg"
+    },
+    {
+      "id": "brickell",
+      "title": "1010 Brickell #2505 — $1,400,000",
+      "copy": "Brickell held at the right altitude. A first address with room to grow the name.",
+      "image": "/images/properties/1010-brickell.jpg"
+    }
+  ],
+  "quotes": [
+    {
+      "id": "aman",
+      "name": "Aman · Buyer · Miami / Fort Lauderdale",
+      "body": "Prince has been with me since I rented my first apartment. Years later he is still the person I call — for the next home, and for rooms far outside real estate. *Whatever negotiation I enter, I call him first.*"
+    },
+    {
+      "id": "seth",
+      "name": "Seth · Investor · Family Office · Global",
+      "body": "I met Prince in college, when he was already closing faster than the rest of us could see the opening. *That instinct is why my family asked him to help expand our legacy.*"
+    },
+    {
+      "id": "yasmeen",
+      "name": "Yasmeen · Seller · Fort Lauderdale",
+      "body": "He understood what the house meant before I found the words. *After the sale, my mother still invites him to lunch.*"
+    }
+  ],
+  "listings": [
+    {
+      "id": "example-fisher-island",
+      "title": "Fisher Island residences — $8,900,000",
+      "copy": "A private-island residence with a private dock. Shown by appointment only.",
+      "image": "/images/properties/south-pointe.jpg"
+    },
+    {
+      "id": "example-palm-beach",
+      "title": "Worth Avenue estate — $6,250,000",
+      "copy": "Held quietly in Palm Beach. The ocean is a short walk; the guest list is not.",
+      "image": "/images/markets/palm-beach.jpg"
+    },
+    {
+      "id": "example-sutton-place",
+      "title": "Sutton Place duplex — $5,400,000",
+      "copy": "East River light, two floors, and a doorman who already knows the name.",
+      "image": "/images/properties/first-ave.jpg"
+    },
+    {
+      "id": "example-las-olas",
+      "title": "Las Olas waterfront — $3,850,000",
+      "copy": "Fort Lauderdale's canal line, with a slip that does not wait for a waitlist.",
+      "image": "/images/properties/harbor-inlet.jpg"
+    },
+    {
+      "id": "example-brickell-key",
+      "title": "Brickell Key penthouse — $2,175,000",
+      "copy": "A first skyline for a family that intends to stay. Bay views, private elevator.",
+      "image": "/images/properties/1010-brickell.jpg"
+    }
+  ]
+}

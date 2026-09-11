@@ -22,13 +22,13 @@ export default function ContactPage() {
       </Reveal>
 
       <Reveal delay={140} className="w-full text-center md:text-left">
-        <h1 className="font-serif text-[clamp(2.4rem,11vw,6.4rem)] leading-[0.92] tracking-tight text-brown">
+        <h1 className="font-serif text-[clamp(1.85rem,6.5vw,3.6rem)] leading-[0.95] tracking-tight text-brown">
           THE DOOR
           <br />
           IS OPEN
         </h1>
 
-        <p className="mt-12 font-display text-[16px] uppercase tracking-[0.18em] text-brown md:mt-20 md:text-[22px]">
+        <p className="mt-10 font-display text-[14px] uppercase tracking-[0.18em] text-brown md:mt-14 md:text-[16px]">
           Contact Prince:
         </p>
         <a
@@ -43,7 +43,7 @@ export default function ContactPage() {
           alt=""
           width={400}
           height={500}
-          className="mx-auto mt-10 h-48 w-auto object-contain md:mx-0 md:mt-14 md:h-64 lg:h-72"
+          className="mx-auto mt-10 h-40 w-auto object-contain md:mx-0 md:mt-12 md:h-52 lg:h-56"
         />
       </Reveal>
     </section>

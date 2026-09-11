@@ -44,7 +44,7 @@ body {
   background: var(--cream);
   color: var(--brown);
   font-family: var(--font-sans), system-ui, sans-serif;
-  font-size: 1.02rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.7;
   letter-spacing: 0.012em;
@@ -95,6 +95,18 @@ body {
 .nav-link:hover,
 .nav-link[data-active="true"] {
   text-decoration: underline;
+}
+
+button.nav-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.studio-zoom {
+  width: 100%;
+  accent-color: var(--brown);
 }
 
 footer .nav-link {
@@ -359,6 +371,44 @@ footer a.nav-link:hover {
   padding-inline: 2%;
 }
 
+.mkt-stack {
+  display: grid;
+  max-width: 1720px;
+  margin-inline: auto;
+  padding-inline: 4vw;
+  padding-bottom: 2rem;
+  gap: 11px;
+}
+
+.mkt-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 78vw;
+}
+
+.mkt-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.28) 38%,
+    rgba(0, 0, 0, 0.16) 100%
+  );
+  pointer-events: none;
+}
+
+.mkt-card-caption {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 18% 8% 8%;
+  text-align: center;
+  pointer-events: none;
+}
+
 .mkt-grid {
   display: grid;
   max-width: 1720px;
@@ -581,6 +631,22 @@ footer a.nav-link:hover {
     grid-area: 13 / 14 / 17 / 23;
   }
 
+  .mkt-stack {
+    grid-template-columns: 1fr 1fr;
+    padding-inline: 1.6vw;
+    padding-bottom: 3rem;
+  }
+
+  .mkt-card {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .mkt-card-wide {
+    grid-column: 1 / -1;
+    aspect-ratio: 2 / 1;
+  }
+
   .mkt-grid {
     padding-inline: 1.6vw;
     padding-bottom: 3rem;
@@ -605,7 +671,7 @@ footer a.nav-link:hover {
   }
 
   .mkt-name h2 {
-    font-size: clamp(1.7rem, 8.4vw, 5.2rem);
+    font-size: clamp(1.55rem, 5.5vw, 3.6rem);
     letter-spacing: 0.06em;
   }
 

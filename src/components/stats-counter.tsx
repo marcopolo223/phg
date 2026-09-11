@@ -98,7 +98,7 @@ function StatValue({
   }, [active, amount, delay]);
 
   return (
-    <p className="mt-4 font-display text-[clamp(1.7rem,6vw,4.1rem)] tracking-tight text-brown tabular-nums">
+    <p className="mt-4 font-display text-[clamp(1.45rem,4.2vw,2.85rem)] tracking-tight text-brown tabular-nums">
       {prefix}
       {display}
       {suffix}

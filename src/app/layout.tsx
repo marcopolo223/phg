@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
+import { SiteFrame } from "@/components/site-frame";
 import "./globals.css";
 
 const sans = localFont({
@@ -105,9 +104,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${sans.variable} ${serif.variable} ${display.variable} ${quote.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-cream text-brown">
-        <Header />
-        <main className="flex-1 overflow-x-clip">{children}</main>
-        <Footer />
+        <SiteFrame>{children}</SiteFrame>
       </body>
     </html>
   );

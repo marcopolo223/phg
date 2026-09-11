@@ -8,7 +8,7 @@ export function Wordmark({
   const sizeClass =
     size === "footer"
       ? "text-[1.7rem] md:text-[2.15rem] lg:text-[2.45rem]"
-      : "text-[0.92rem] sm:text-[1.02rem] md:text-[1.18rem]";
+      : "text-[1.48rem] sm:text-[1.58rem] md:text-[1.78rem] lg:text-[1.95rem]";
 
   return (
     <span
