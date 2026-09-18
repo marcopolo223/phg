@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ContinueStrip } from "@/components/continue-strip";
 import { Reveal } from "@/components/reveal";
+import { requireSiteUnlock } from "@/lib/site-lock";
 
 export const metadata: Metadata = {
   title: "Experiences",
 };
 
-export default function ExperiencesPage() {
+export default async function ExperiencesPage() {
+  await requireSiteUnlock();
   return (
     <>
       <section className="relative flex min-h-[72svh] items-center justify-center overflow-hidden px-5 py-28 md:min-h-[78svh] md:py-36">
@@ -21,7 +23,7 @@ export default function ExperiencesPage() {
         />
         <div className="absolute inset-0 bg-cream/55" />
         <Reveal className="relative z-10 mx-auto max-w-3xl text-center">
-          <p className="font-display text-[15px] uppercase tracking-[0.02em] text-brown">
+          <p className="font-display text-[15px] uppercase text-brown">
             Experiences
           </p>
           <h1 className="mt-6 font-serif text-[clamp(1.85rem,5.5vw,3.25rem)] uppercase leading-[0.95] tracking-tight text-brown">

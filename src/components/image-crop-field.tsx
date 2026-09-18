@@ -267,7 +267,7 @@ export function ImageCropField({ name, aspect, hint }: ImageCropFieldProps) {
 
   return (
     <div>
-      <span className="font-label text-[11px] tracking-[0.02em] text-brown/70">
+      <span className="font-label text-[11px] text-brown/70">
         Photograph
       </span>
       <input

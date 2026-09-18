@@ -19,17 +19,21 @@ export default async function EnterPage({
   const from = typeof query.from === "string" ? query.from : "/";
 
   return (
-    <section className="mx-auto flex min-h-[100svh] w-full max-w-lg flex-col justify-center px-5 py-16 md:px-8">
-      <div className="mb-12 text-brown">
-        <Wordmark size="footer" />
-        <p className="mt-10 font-label text-[11px] tracking-[0.02em] text-brown/60">
-          Private
+    <section className="flex min-h-[100svh] w-full flex-col items-center justify-center px-[max(1.5rem,env(safe-area-inset-left))] py-[max(4rem,env(safe-area-inset-top))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+      <div className="flex w-full max-w-[17.5rem] flex-col items-center text-center">
+        <h1 className="text-brown">
+          <Wordmark size="footer" className="block text-center" />
+        </h1>
+        <p className="mt-5 font-label text-[11px] text-brown/50">
+          Precision · Pulse · Presence
         </p>
-        <p className="mt-4 max-w-sm text-[1.02rem] leading-[1.8] text-brown/70">
-          Enter the password to view the site.
+        <p className="mt-10 text-[0.98rem] leading-[1.7] text-brown/65">
+          This site is private.
         </p>
+        <div className="mt-8 w-full">
+          <EnterForm from={from} />
+        </div>
       </div>
-      <EnterForm from={from} />
     </section>
   );
 }

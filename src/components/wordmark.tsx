@@ -12,7 +12,7 @@ export function Wordmark({
 
   return (
     <span
-      className={`font-serif uppercase leading-[0.78] tracking-[-0.045em] ${sizeClass} ${className}`}
+      className={`inline-block text-center font-serif uppercase leading-[0.78] tracking-[-0.045em] ${sizeClass} ${className}`}
     >
       Prince
       <br />

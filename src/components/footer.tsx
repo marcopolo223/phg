@@ -68,7 +68,7 @@ export function Footer() {
           <span className="nav-link pointer-events-none w-fit py-1.5 md:ml-auto">
             Compass Active Listings
           </span>
-          <p className="mt-5 font-label text-[11px] tracking-[0.02em] text-cream/60 md:mt-6 md:text-[12px]">
+          <p className="mt-5 font-label text-[11px] text-cream/60 md:mt-6 md:text-[12px]">
             © 2026 Prince Hassan. All rights reserved.
           </p>
         </div>

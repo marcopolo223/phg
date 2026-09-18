@@ -124,7 +124,7 @@ export function StatsCounter() {
       <div className="grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-6">
         {stats.map((item, i) => (
           <div key={item.label} className="text-center">
-            <p className="font-label text-[12px] tracking-[0.02em] text-brown sm:text-[14px] md:text-[15px]">
+            <p className="font-label text-[12px] text-brown sm:text-[14px] md:text-[15px]">
               {item.label}
             </p>
             <StatValue
@@ -136,7 +136,7 @@ export function StatsCounter() {
             />
             <div className="mx-auto mt-4 h-px w-11 bg-brown/35" />
             {item.lines ? (
-              <p className="mt-4 font-label text-[11px] leading-[1.7] tracking-[0.02em] text-brown sm:text-[13px] md:text-[14px]">
+              <p className="mt-4 font-label text-[11px] leading-[1.7] text-brown sm:text-[13px] md:text-[14px]">
                 {item.lines.map((line) => (
                   <span key={line} className="block">
                     {line}
@@ -144,7 +144,7 @@ export function StatsCounter() {
                 ))}
               </p>
             ) : (
-              <p className="mx-auto mt-4 max-w-[14ch] font-label text-[11px] leading-[1.7] tracking-[0.02em] text-brown sm:text-[13px] md:text-[14px]">
+              <p className="mx-auto mt-4 max-w-[14ch] font-label text-[11px] leading-[1.7] text-brown sm:text-[13px] md:text-[14px]">
                 {item.detail}
               </p>
             )}

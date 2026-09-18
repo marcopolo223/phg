@@ -33,7 +33,7 @@ export default async function DashboardPage({
         }
       />
       <section className="mx-auto w-full max-w-[1400px] px-5 py-12 md:px-16 md:py-16 lg:px-20">
-        <p className="font-label text-[11px] tracking-[0.02em] text-brown/60">
+        <p className="font-label text-[11px] text-brown/60">
           Private
         </p>
         <h1 className="mt-3 font-serif text-[clamp(1.85rem,5vw,3.2rem)] uppercase tracking-tight text-brown">

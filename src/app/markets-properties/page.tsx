@@ -5,6 +5,7 @@ import { MarketsGrid } from "@/components/markets-grid";
 import { PastTransactionsMarquee } from "@/components/past-transactions-marquee";
 import { Reveal } from "@/components/reveal";
 import { getPublicContent } from "@/lib/content";
+import { requireSiteUnlock } from "@/lib/site-lock";
 
 export const dynamic = "force-dynamic";
 
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function MarketsPage() {
+  await requireSiteUnlock();
   const { markets, deals } = await getPublicContent();
 
   return (
@@ -52,7 +54,7 @@ export default async function MarketsPage() {
       {deals.length ? (
         <section className="pb-20 pt-10 md:pb-28 md:pt-16">
           <Reveal>
-            <p className="mb-10 text-center font-display text-[18px] uppercase tracking-[0.02em] text-brown md:mb-12 md:text-[20px] lg:text-[22px]">
+            <p className="mb-10 text-center font-display text-[18px] uppercase text-brown md:mb-12 md:text-[20px] lg:text-[22px]">
               Past transactions
             </p>
           </Reveal>

@@ -61,8 +61,6 @@ export function Header() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const lightBars = home && overHero && !open;
-
   const overlay =
     mounted && open
       ? createPortal(
@@ -73,7 +71,7 @@ export function Header() {
             aria-modal="true"
             aria-label="Site menu"
           >
-            <div className="flex items-center justify-between px-[max(1.25rem,env(safe-area-inset-left))] py-4 pr-[max(1.25rem,env(safe-area-inset-right))] pt-[max(1rem,env(safe-area-inset-top))]">
+            <div className="flex items-center justify-between px-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pb-4 pt-[max(1.75rem,calc(env(safe-area-inset-top)+0.75rem))]">
               <Link
                 href="/"
                 aria-label="Prince Hassan Group home"
@@ -105,7 +103,7 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     data-active={active}
-                    className="nav-link block w-full text-center text-[clamp(1.65rem,6.5vw,2.35rem)] leading-none"
+                    className="nav-link block w-full text-center text-[clamp(1.65rem,6.5vw,2.35rem)] leading-none tracking-[-0.045em]"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}
@@ -128,17 +126,17 @@ export function Header() {
           : "sticky top-0 z-[100] border-b border-line/70 bg-cream/95 backdrop-blur-md"
       }
     >
-      <div className="mx-auto flex w-full max-w-[1800px] items-center justify-between gap-4 px-[max(1.25rem,env(safe-area-inset-left))] py-4 pr-[max(1.25rem,env(safe-area-inset-right))] pt-[max(1rem,env(safe-area-inset-top))] md:gap-6 md:px-16 md:py-5 lg:px-20">
+      <div className="mx-auto flex w-full max-w-[1800px] items-center justify-between gap-4 px-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pb-4 pt-[max(1.75rem,calc(env(safe-area-inset-top)+0.75rem))] md:gap-6 md:px-16 md:pb-5 md:pt-[max(2.15rem,calc(env(safe-area-inset-top)+1rem))] lg:items-start lg:px-20">
         <Link
           href="/"
           aria-label="Prince Hassan Group home"
-          className={`relative z-10 shrink-0 cursor-pointer ${lightBars ? "text-cream" : "text-brown"}`}
+          className="relative z-10 shrink-0 cursor-pointer text-brown"
           onClick={() => setOpen(false)}
         >
           <Wordmark />
         </Link>
 
-        <nav className="hidden items-center gap-5 lg:flex xl:gap-8">
+        <nav className="hidden items-center gap-5 lg:flex lg:pt-[0.2rem] xl:gap-8">
           {nav.map((item) => {
             const active =
               item.href === "/"
@@ -149,7 +147,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 data-active={active}
-                className="nav-link"
+                className="nav-link tracking-[-0.045em]"
               >
                 {item.label}
               </Link>
@@ -166,13 +164,13 @@ export function Header() {
           onClick={() => setOpen((v) => !v)}
         >
           <span
-            className={`h-px w-6 transition ${lightBars ? "bg-cream" : "bg-brown"} ${open ? "translate-y-[4px] rotate-45" : ""}`}
+            className={`h-px w-6 bg-brown transition ${open ? "translate-y-[4px] rotate-45" : ""}`}
           />
           <span
-            className={`h-px w-6 transition ${lightBars ? "bg-cream" : "bg-brown"} ${open ? "opacity-0" : ""}`}
+            className={`h-px w-6 bg-brown transition ${open ? "opacity-0" : ""}`}
           />
           <span
-            className={`h-px w-6 transition ${lightBars ? "bg-cream" : "bg-brown"} ${open ? "-translate-y-[4px] -rotate-45" : ""}`}
+            className={`h-px w-6 bg-brown transition ${open ? "-translate-y-[4px] -rotate-45" : ""}`}
           />
         </button>
       </div>

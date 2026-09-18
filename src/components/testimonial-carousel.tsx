@@ -11,7 +11,7 @@ function QuoteCard({ item }: { item: Quote }) {
         <p className="font-quote text-[1.15rem] leading-[1.7] text-brown md:text-[1.28rem] md:leading-[1.75]">
           “<QuoteText text={item.body} />”
         </p>
-        <footer className="mt-8 font-label text-[13px] tracking-[0.02em] text-brown/80 md:mt-10 md:text-[14px]">
+        <footer className="mt-8 font-label text-[13px] text-brown/80 md:mt-10 md:text-[14px]">
           {item.name}
         </footer>
       </blockquote>

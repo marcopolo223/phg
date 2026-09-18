@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Reveal } from "@/components/reveal";
 import { site } from "@/lib/site";
+import { requireSiteUnlock } from "@/lib/site-lock";
 
 export const metadata: Metadata = {
   title: "Contact Prince",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  await requireSiteUnlock();
   return (
     <section className="mx-auto flex min-h-[calc(100svh-8rem)] max-w-[1680px] flex-col items-center gap-10 px-5 py-12 md:grid md:grid-cols-2 md:items-center md:gap-16 md:px-12 md:py-20 lg:gap-24">
       <Reveal className="w-full">
@@ -28,7 +30,7 @@ export default function ContactPage() {
           IS OPEN
         </h1>
 
-        <p className="mt-10 font-display text-[14px] uppercase tracking-[0.02em] text-brown md:mt-14 md:text-[16px]">
+        <p className="mt-10 font-display text-[14px] uppercase text-brown md:mt-14 md:text-[16px]">
           Contact Prince:
         </p>
         <a

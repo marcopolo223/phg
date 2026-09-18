@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import {
+  SITE_COOKIE,
+  isSiteCookieValid,
+  sitePassword,
+} from "@/lib/site-cookie";
 
-const SITE_COOKIE = "phg_site";
 const ADMIN_COOKIE = "phg_admin";
 
 function isPublicAsset(pathname: string) {
@@ -27,8 +31,7 @@ export function proxy(request: NextRequest) {
     }
   }
 
-  const sitePassword = process.env.SITE_PASSWORD;
-  if (!sitePassword || isPublicAsset(pathname) || pathname === "/enter") {
+  if (!sitePassword() || isPublicAsset(pathname) || pathname === "/enter") {
     return NextResponse.next();
   }
 
@@ -36,7 +39,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const unlocked = Boolean(request.cookies.get(SITE_COOKIE)?.value);
+  const unlocked = isSiteCookieValid(request.cookies.get(SITE_COOKIE)?.value);
   if (pathname.startsWith("/api/media")) {
     if (unlocked || request.cookies.get(ADMIN_COOKIE)?.value) {
       return NextResponse.next();
