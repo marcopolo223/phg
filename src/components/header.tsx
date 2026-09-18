@@ -105,7 +105,7 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     data-active={active}
-                    className="nav-link block w-full text-center text-[clamp(1.65rem,6.5vw,2.35rem)] leading-none tracking-[0.08em]"
+                    className="nav-link block w-full text-center text-[clamp(1.65rem,6.5vw,2.35rem)] leading-none"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}

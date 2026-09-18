@@ -6,7 +6,10 @@ import { Header } from "@/components/header";
 
 export function SiteFrame({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const studio = pathname === "/login" || pathname.startsWith("/dashboard");
+  const studio =
+    pathname === "/login" ||
+    pathname === "/enter" ||
+    pathname.startsWith("/dashboard");
 
   return (
     <>

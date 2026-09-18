@@ -56,14 +56,14 @@
       "title": "300 S Pointe Dr #2801 — $4,500,000",
       "copy": "Held off-market at Miami's southernmost point. City, bay, and ocean in one turn.",
       "image": "/images/properties/south-pointe.jpg",
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "missoni-5201",
       "title": "Missoni Baia #5201 — $3,250,000",
       "copy": "Three closings in this building. The bay, the architecture, and a clientele that stays.",
       "image": "/images/properties/missoni-5201.jpg",
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "windermere",
