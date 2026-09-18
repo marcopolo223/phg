@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { getContent, newId, saveContent, saveUpload } from "@/lib/content";
 import { isLoggedIn } from "@/lib/auth";
@@ -7,9 +8,7 @@ import { isLoggedIn } from "@/lib/auth";
 export type ContentState = { error?: string; ok?: string } | undefined;
 
 async function guard() {
-  if (!(await isLoggedIn())) {
-    throw new Error("Unauthorized");
-  }
+  if (!(await isLoggedIn())) redirect("/login");
 }
 
 function refresh() {
@@ -17,6 +16,13 @@ function refresh() {
   revalidatePath("/markets-properties");
   revalidatePath("/advisory");
   revalidatePath("/dashboard");
+}
+
+function fail(error: unknown, fallback: string): never {
+  const raw =
+    error instanceof Error && error.message ? error.message : fallback;
+  const message = raw.length > 280 ? `${raw.slice(0, 277)}...` : raw;
+  redirect(`/dashboard?error=${encodeURIComponent(message)}`);
 }
 
 export async function addMarket(_prev: ContentState, formData: FormData) {
@@ -46,11 +52,15 @@ export async function addMarket(_prev: ContentState, formData: FormData) {
 
 export async function removeMarket(formData: FormData) {
   await guard();
-  const id = String(formData.get("id") || "");
-  const content = await getContent();
-  content.markets = content.markets.filter((item) => item.id !== id);
-  await saveContent(content);
-  refresh();
+  try {
+    const id = String(formData.get("id") || "");
+    const content = await getContent();
+    content.markets = content.markets.filter((item) => item.id !== id);
+    await saveContent(content);
+    refresh();
+  } catch (error) {
+    return fail(error, "Could not remove this market.");
+  }
 }
 
 export async function addDeal(_prev: ContentState, formData: FormData) {
@@ -74,11 +84,15 @@ export async function addDeal(_prev: ContentState, formData: FormData) {
 
 export async function removeDeal(formData: FormData) {
   await guard();
-  const id = String(formData.get("id") || "");
-  const content = await getContent();
-  content.deals = content.deals.filter((item) => item.id !== id);
-  await saveContent(content);
-  refresh();
+  try {
+    const id = String(formData.get("id") || "");
+    const content = await getContent();
+    content.deals = content.deals.filter((item) => item.id !== id);
+    await saveContent(content);
+    refresh();
+  } catch (error) {
+    return fail(error, "Could not remove this transaction.");
+  }
 }
 
 export async function addQuote(_prev: ContentState, formData: FormData) {
@@ -87,20 +101,30 @@ export async function addQuote(_prev: ContentState, formData: FormData) {
   const body = String(formData.get("body") || "").trim();
   if (!name || !body) return { error: "Attribution and quote are required." };
 
-  const content = await getContent();
-  content.quotes.push({ id: newId(), name, body, hidden: false });
-  await saveContent(content);
-  refresh();
-  return { ok: "Note added." };
+  try {
+    const content = await getContent();
+    content.quotes.push({ id: newId(), name, body, hidden: false });
+    await saveContent(content);
+    refresh();
+    return { ok: "Note added." };
+  } catch (error) {
+    return {
+      error: error instanceof Error ? error.message : "Could not add note.",
+    };
+  }
 }
 
 export async function removeQuote(formData: FormData) {
   await guard();
-  const id = String(formData.get("id") || "");
-  const content = await getContent();
-  content.quotes = content.quotes.filter((item) => item.id !== id);
-  await saveContent(content);
-  refresh();
+  try {
+    const id = String(formData.get("id") || "");
+    const content = await getContent();
+    content.quotes = content.quotes.filter((item) => item.id !== id);
+    await saveContent(content);
+    refresh();
+  } catch (error) {
+    return fail(error, "Could not remove this note.");
+  }
 }
 
 export async function addListing(_prev: ContentState, formData: FormData) {
@@ -124,11 +148,15 @@ export async function addListing(_prev: ContentState, formData: FormData) {
 
 export async function removeListing(formData: FormData) {
   await guard();
-  const id = String(formData.get("id") || "");
-  const content = await getContent();
-  content.listings = content.listings.filter((item) => item.id !== id);
-  await saveContent(content);
-  refresh();
+  try {
+    const id = String(formData.get("id") || "");
+    const content = await getContent();
+    content.listings = content.listings.filter((item) => item.id !== id);
+    await saveContent(content);
+    refresh();
+  } catch (error) {
+    return fail(error, "Could not remove this listing.");
+  }
 }
 
 const KINDS = ["markets", "deals", "listings", "quotes"] as const;
@@ -136,14 +164,18 @@ type ContentKind = (typeof KINDS)[number];
 
 export async function toggleHidden(formData: FormData) {
   await guard();
-  const kind = String(formData.get("kind") || "") as ContentKind;
-  const id = String(formData.get("id") || "");
-  if (!KINDS.includes(kind) || !id) return;
+  try {
+    const kind = String(formData.get("kind") || "") as ContentKind;
+    const id = String(formData.get("id") || "");
+    if (!KINDS.includes(kind) || !id) return;
 
-  const content = await getContent();
-  const item = content[kind].find((entry) => entry.id === id);
-  if (!item) return;
-  item.hidden = !item.hidden;
-  await saveContent(content);
-  refresh();
+    const content = await getContent();
+    const item = content[kind].find((entry) => entry.id === id);
+    if (!item) return;
+    item.hidden = !item.hidden;
+    await saveContent(content);
+    refresh();
+  } catch (error) {
+    return fail(error, "Could not update visibility.");
+  }
 }

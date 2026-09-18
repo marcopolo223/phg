@@ -30,7 +30,7 @@ export default async function HomePage() {
         <div className="mt-14 grid items-start gap-12 md:mt-20 md:grid-cols-2 md:gap-x-16 md:gap-y-20 lg:gap-x-20">
           <Reveal className="order-2 md:order-1">
             <div>
-              <p className="font-label text-[14px] tracking-[0.2em] text-[#8c735e] md:text-[15px]">
+              <p className="font-label text-[14px] tracking-[0.02em] text-[#8c735e] md:text-[15px]">
                 Meet Prince:
               </p>
               <div className="mt-7 space-y-6 text-[1rem] leading-[1.8] text-brown md:text-[1.05rem]">
@@ -63,7 +63,7 @@ export default async function HomePage() {
                   Coral Gables—and the portfolios that connect them.
                 </p>
               </div>
-              <p className="mt-12 text-[14px] tracking-[0.16em] uppercase text-brown-ink md:text-[15px]">
+              <p className="mt-12 text-[14px] tracking-[0.02em] uppercase text-brown-ink md:text-[15px]">
                 For Prince, every deal is a seal in a larger legacy.
               </p>
             </div>
@@ -106,7 +106,7 @@ export default async function HomePage() {
             height={160}
             className="mx-auto mb-10 h-20 w-auto object-contain md:h-24"
           />
-          <p className="mx-auto max-w-[40rem] text-center font-serif text-[clamp(1.15rem,2.15vw,2.05rem)] leading-[1.35] tracking-[0.04em] uppercase text-brown md:max-w-[58rem]">
+          <p className="mx-auto max-w-[40rem] text-center font-serif text-[clamp(1.15rem,2.15vw,2.05rem)] leading-[1.35] tracking-[0.02em] uppercase text-brown md:max-w-[58rem]">
             <span className="lg:block lg:whitespace-nowrap">
               What my lineage built across oceans,
             </span>{" "}
@@ -123,7 +123,7 @@ export default async function HomePage() {
       {listings.length ? (
         <section className="pb-20 pt-6 md:pb-28 md:pt-10">
           <Reveal>
-            <p className="mb-10 text-center font-display text-[18px] uppercase tracking-[0.18em] text-brown md:mb-12 md:text-[20px] lg:text-[22px]">
+            <p className="mb-10 text-center font-display text-[18px] uppercase tracking-[0.02em] text-brown md:mb-12 md:text-[20px] lg:text-[22px]">
               Current listings
             </p>
           </Reveal>
