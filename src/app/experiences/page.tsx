@@ -21,7 +21,7 @@ export default function ExperiencesPage() {
         />
         <div className="absolute inset-0 bg-cream/55" />
         <Reveal className="relative z-10 mx-auto max-w-3xl text-center">
-          <p className="font-display text-[15px] uppercase tracking-[0.22em] text-brown">
+          <p className="font-display text-[15px] uppercase tracking-[0.02em] text-brown">
             Experiences
           </p>
           <h1 className="mt-6 font-serif text-[clamp(1.85rem,5.5vw,3.25rem)] uppercase leading-[0.95] tracking-tight text-brown">

@@ -52,7 +52,7 @@ export default async function MarketsPage() {
       {deals.length ? (
         <section className="pb-20 pt-10 md:pb-28 md:pt-16">
           <Reveal>
-            <p className="mb-10 text-center font-display text-[18px] uppercase tracking-[0.18em] text-brown md:mb-12 md:text-[20px] lg:text-[22px]">
+            <p className="mb-10 text-center font-display text-[18px] uppercase tracking-[0.02em] text-brown md:mb-12 md:text-[20px] lg:text-[22px]">
               Past transactions
             </p>
           </Reveal>

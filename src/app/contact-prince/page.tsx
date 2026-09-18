@@ -28,7 +28,7 @@ export default function ContactPage() {
           IS OPEN
         </h1>
 
-        <p className="mt-10 font-display text-[14px] uppercase tracking-[0.18em] text-brown md:mt-14 md:text-[16px]">
+        <p className="mt-10 font-display text-[14px] uppercase tracking-[0.02em] text-brown md:mt-14 md:text-[16px]">
           Contact Prince:
         </p>
         <a

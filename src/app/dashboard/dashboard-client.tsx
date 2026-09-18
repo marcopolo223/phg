@@ -25,7 +25,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="font-label text-[11px] tracking-[0.18em] text-brown/70">
+      <span className="font-label text-[11px] tracking-[0.02em] text-brown/70">
         {label}
       </span>
       <div className="mt-2">{children}</div>
@@ -69,7 +69,7 @@ function SaveButton({
     <button
       type="submit"
       disabled={pending}
-      className="bg-brown px-8 py-3 font-label text-[12px] tracking-[0.16em] text-cream disabled:opacity-60"
+      className="bg-brown px-8 py-3 font-label text-[12px] tracking-[0.02em] text-cream disabled:opacity-60"
     >
       {pending ? "Saving…" : label}
     </button>
@@ -80,7 +80,7 @@ function RemoveButton({ label }: { label: string }) {
   return (
     <button
       type="submit"
-      className="font-label text-[11px] tracking-[0.16em] text-cream underline decoration-cream/50 underline-offset-[0.32em]"
+      className="font-label text-[11px] tracking-[0.02em] text-cream underline decoration-cream/50 underline-offset-[0.32em]"
     >
       {label}
     </button>
@@ -104,14 +104,14 @@ function VisibilityActions({
 }) {
   const link =
     tone === "cream"
-      ? "font-label text-[11px] tracking-[0.16em] text-cream underline decoration-cream/50 underline-offset-[0.32em]"
+      ? "font-label text-[11px] tracking-[0.02em] text-cream underline decoration-cream/50 underline-offset-[0.32em]"
       : "nav-link";
 
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
       {hidden ? (
         <span
-          className={`font-label text-[10px] tracking-[0.16em] ${
+          className={`font-label text-[10px] tracking-[0.02em] ${
             tone === "cream" ? "text-cream" : "text-brown/55"
           }`}
         >
@@ -156,7 +156,7 @@ function MarketsPanel({ markets }: { markets: Market[] }) {
       <form ref={formRef} action={action} className="space-y-8">
         <ResetOnOk state={state} formRef={formRef} />
         <div>
-          <p className="font-label text-[11px] tracking-[0.18em] text-brown/60">
+          <p className="font-label text-[11px] tracking-[0.02em] text-brown/60">
             New market
           </p>
           <h2 className="mt-3 font-serif text-[clamp(1.45rem,3vw,2.05rem)] uppercase tracking-tight">
@@ -201,7 +201,7 @@ function MarketsPanel({ markets }: { markets: Market[] }) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/15" />
               <div className="absolute inset-x-0 bottom-0 px-5 pb-5 text-center">
-                <p className="font-display text-[clamp(1.4rem,4vw,2.1rem)] leading-none tracking-wide text-cream">
+                <p className="font-display text-[clamp(1.4rem,4vw,2.1rem)] leading-none text-cream">
                   {market.name}
                 </p>
                 <p className="mx-auto mt-2 max-w-[16rem] text-[0.9rem] leading-snug text-cream">
@@ -296,7 +296,7 @@ function DealsPanel({ deals }: { deals: Deal[] }) {
       <form ref={formRef} action={action} className="space-y-8">
         <ResetOnOk state={state} formRef={formRef} />
         <div>
-          <p className="font-label text-[11px] tracking-[0.18em] text-brown/60">
+          <p className="font-label text-[11px] tracking-[0.02em] text-brown/60">
             Closed
           </p>
           <h2 className="mt-3 font-serif text-[clamp(1.45rem,3vw,2.05rem)] uppercase tracking-tight">
@@ -344,7 +344,7 @@ function ListingsPanel({ listings }: { listings: Listing[] }) {
       <form ref={formRef} action={action} className="space-y-8">
         <ResetOnOk state={state} formRef={formRef} />
         <div>
-          <p className="font-label text-[11px] tracking-[0.18em] text-brown/60">
+          <p className="font-label text-[11px] tracking-[0.02em] text-brown/60">
             For sale
           </p>
           <h2 className="mt-3 font-serif text-[clamp(1.45rem,3vw,2.05rem)] uppercase tracking-tight">
@@ -392,7 +392,7 @@ function QuotesPanel({ quotes }: { quotes: Quote[] }) {
       <form ref={formRef} action={action} className="space-y-8">
         <ResetOnOk state={state} formRef={formRef} />
         <div>
-          <p className="font-label text-[11px] tracking-[0.18em] text-brown/60">
+          <p className="font-label text-[11px] tracking-[0.02em] text-brown/60">
             Overheard
           </p>
           <h2 className="mt-3 font-serif text-[clamp(1.45rem,3vw,2.05rem)] uppercase tracking-tight">
@@ -433,7 +433,7 @@ function QuotesPanel({ quotes }: { quotes: Quote[] }) {
                 “{quote.body}”
               </p>
               <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
-                <p className="font-label text-[11px] tracking-[0.16em] text-brown/70">
+                <p className="font-label text-[11px] tracking-[0.02em] text-brown/70">
                   {quote.name}
                 </p>
                 <VisibilityActions

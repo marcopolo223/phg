@@ -16,7 +16,7 @@ export default async function LoginPage() {
     <>
       <StudioHeader />
       <section className="mx-auto flex min-h-[calc(100svh-8rem)] w-full max-w-lg flex-col justify-center px-5 py-16 md:px-8">
-        <p className="font-label text-[11px] tracking-[0.18em] text-brown/60">
+        <p className="font-label text-[11px] tracking-[0.02em] text-brown/60">
           Private
         </p>
         <h1 className="mt-3 font-serif text-[clamp(1.8rem,6vw,2.8rem)] uppercase tracking-tight text-brown">

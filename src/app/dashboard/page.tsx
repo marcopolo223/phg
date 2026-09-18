@@ -13,9 +13,13 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: PageProps<"/dashboard">) {
   if (!(await isLoggedIn())) redirect("/login");
   const content = await getContent();
+  const query = await searchParams;
+  const error = typeof query.error === "string" ? query.error : "";
 
   return (
     <>
@@ -29,7 +33,7 @@ export default async function DashboardPage() {
         }
       />
       <section className="mx-auto w-full max-w-[1400px] px-5 py-12 md:px-16 md:py-16 lg:px-20">
-        <p className="font-label text-[11px] tracking-[0.18em] text-brown/60">
+        <p className="font-label text-[11px] tracking-[0.02em] text-brown/60">
           Private
         </p>
         <h1 className="mt-3 font-serif text-[clamp(1.85rem,5vw,3.2rem)] uppercase tracking-tight text-brown">
@@ -39,6 +43,11 @@ export default async function DashboardPage() {
           Markets, listings, past transactions, and overheard notes. Hide keeps
           an item in Studio without showing it on the site. Remove deletes it.
         </p>
+        {error ? (
+          <p className="mt-6 max-w-2xl text-[0.98rem] leading-relaxed text-red-800">
+            {error}
+          </p>
+        ) : null}
         <div className="mt-12 md:mt-16">
           <DashboardClient
             markets={content.markets}

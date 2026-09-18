@@ -9,7 +9,7 @@ export function LoginForm() {
   return (
     <form action={action} className="mx-auto w-full max-w-md space-y-5">
       <label className="block">
-        <span className="font-label text-[11px] tracking-[0.18em] text-brown/70">Email</span>
+        <span className="font-label text-[11px] tracking-[0.02em] text-brown/70">Email</span>
         <input
           name="username"
           type="email"
@@ -19,7 +19,7 @@ export function LoginForm() {
         />
       </label>
       <label className="block">
-        <span className="font-label text-[11px] tracking-[0.18em] text-brown/70">Password</span>
+        <span className="font-label text-[11px] tracking-[0.02em] text-brown/70">Password</span>
         <input
           name="password"
           type="password"
@@ -34,7 +34,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full bg-brown px-4 py-3 font-label text-[12px] tracking-[0.16em] text-cream disabled:opacity-60"
+        className="w-full bg-brown px-4 py-3 font-label text-[12px] tracking-[0.02em] text-cream disabled:opacity-60"
       >
         {pending ? "Signing in…" : "Sign in"}
       </button>

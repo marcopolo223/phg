@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { list, put } from "@vercel/blob";
+import { get, put } from "@vercel/blob";
 
 export type Market = {
   id: string;
@@ -44,6 +44,7 @@ const EMPTY: SiteContent = { markets: [], deals: [], quotes: [], listings: [] };
 const FILE = path.join(process.cwd(), "data", "content.json");
 const UPLOADS = path.join(process.cwd(), "public", "uploads");
 const BLOB_CONTENT = "cms/content.json";
+const BLOB_ACCESS = "private" as const;
 
 function withHidden<T extends { hidden?: boolean }>(
   items: T[],
@@ -62,13 +63,15 @@ function parseContent(raw: string): SiteContent {
 }
 
 function useBlob() {
-  return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+  return Boolean(
+    process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID,
+  );
 }
 
 function assertWritable() {
   if (process.env.VERCEL && !useBlob()) {
     throw new Error(
-      "Studio cannot save on Vercel until a Blob store is connected. In the Vercel project, open Storage → Blob, create a store, and pull BLOB_READ_WRITE_TOKEN into Environment Variables, then redeploy.",
+      "Studio cannot save on Vercel until the Blob store is connected to this project (Storage → your store → Projects).",
     );
   }
 }
@@ -79,12 +82,13 @@ async function readLocalFile() {
 }
 
 async function readBlobContent() {
-  const { blobs } = await list({ prefix: BLOB_CONTENT, limit: 10 });
-  const blob = blobs.find((item) => item.pathname === BLOB_CONTENT) ?? blobs[0];
-  if (!blob) return null;
-  const res = await fetch(blob.url, { cache: "no-store" });
-  if (!res.ok) return null;
-  return parseContent(await res.text());
+  const result = await get(BLOB_CONTENT, {
+    access: BLOB_ACCESS,
+    useCache: false,
+  });
+  if (!result || result.statusCode !== 200 || !result.stream) return null;
+  const raw = await new Response(result.stream).text();
+  return parseContent(raw);
 }
 
 export async function getContent(): Promise<SiteContent> {
@@ -115,7 +119,7 @@ export async function saveContent(content: SiteContent) {
 
   if (useBlob()) {
     await put(BLOB_CONTENT, json, {
-      access: "public",
+      access: BLOB_ACCESS,
       addRandomSuffix: false,
       allowOverwrite: true,
       contentType: "application/json",
@@ -142,20 +146,26 @@ export async function saveUpload(file: File | null): Promise<string | null> {
     ext && ["jpg", "jpeg", "png", "webp", "gif"].includes(ext) ? ext : "jpg";
   const name = `${Date.now()}-${crypto.randomUUID().slice(0, 8)}.${safeExt}`;
   const bytes = Buffer.from(await file.arrayBuffer());
+  const pathname = `uploads/${name}`;
 
   if (useBlob()) {
-    const blob = await put(`uploads/${name}`, bytes, {
-      access: "public",
+    await put(pathname, bytes, {
+      access: BLOB_ACCESS,
       addRandomSuffix: false,
+      allowOverwrite: true,
       contentType: file.type || "image/jpeg",
     });
-    return blob.url;
+    return `/api/media/${pathname}`;
   }
 
   assertWritable();
   await mkdir(UPLOADS, { recursive: true });
   await writeFile(path.join(UPLOADS, name), bytes);
   return `/uploads/${name}`;
+}
+
+export async function readUploadBlob(pathname: string) {
+  return get(pathname, { access: BLOB_ACCESS });
 }
 
 export function newId() {

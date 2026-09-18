@@ -32,8 +32,8 @@ const sans = localFont({
     },
   ],
   variable: "--font-sans",
-  display: "swap",
-  fallback: ["system-ui", "sans-serif"],
+  display: "block",
+  adjustFontFallback: false,
 });
 
 const serif = localFont({
@@ -55,26 +55,24 @@ const serif = localFont({
     },
   ],
   variable: "--font-serif",
-  display: "swap",
-  adjustFontFallback: "Times New Roman",
-  fallback: ["Times New Roman", "serif"],
+  display: "block",
+  adjustFontFallback: false,
 });
 
 const display = localFont({
   src: "../fonts/BebasNeuePro-Bold.otf",
   variable: "--font-display",
   weight: "700",
-  display: "swap",
-  fallback: ["Impact", "sans-serif"],
+  display: "block",
+  adjustFontFallback: false,
 });
 
 const quote = localFont({
   src: "../fonts/MinionPro-Regular.otf",
   variable: "--font-quote",
   weight: "400",
-  display: "swap",
-  adjustFontFallback: "Times New Roman",
-  fallback: ["Times New Roman", "serif"],
+  display: "block",
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
