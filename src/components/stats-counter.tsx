@@ -98,7 +98,7 @@ function StatValue({
   }, [active, amount, delay]);
 
   return (
-    <p className="mt-4 font-display text-[clamp(1.45rem,4.2vw,2.85rem)] tracking-tight text-brown tabular-nums">
+    <p className="mt-4 font-serif text-[clamp(1.75rem,4.4vw,3rem)] uppercase tracking-tight text-brown tabular-nums">
       {prefix}
       {display}
       {suffix}
@@ -136,7 +136,7 @@ export function StatsCounter() {
             />
             <div className="mx-auto mt-4 h-px w-11 bg-brown/35" />
             {item.lines ? (
-              <p className="mt-4 font-label text-[11px] leading-[1.7] text-brown sm:text-[13px] md:text-[14px]">
+              <p className="mt-4 text-[11px] uppercase leading-[1.7] text-brown sm:text-[13px] md:text-[14px]">
                 {item.lines.map((line) => (
                   <span key={line} className="block">
                     {line}
@@ -144,7 +144,7 @@ export function StatsCounter() {
                 ))}
               </p>
             ) : (
-              <p className="mx-auto mt-4 max-w-[14ch] font-label text-[11px] leading-[1.7] text-brown sm:text-[13px] md:text-[14px]">
+              <p className="mx-auto mt-4 max-w-[14ch] text-[11px] uppercase leading-[1.7] text-brown sm:text-[13px] md:text-[14px]">
                 {item.detail}
               </p>
             )}

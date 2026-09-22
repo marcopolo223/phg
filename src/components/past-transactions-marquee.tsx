@@ -31,7 +31,7 @@ export function PastTransactionsMarquee({
             sizes="(min-width: 1024px) 30vw, (min-width: 768px) 42vw, 78vw"
           />
         </div>
-        <h3 className="mx-auto mt-[6%] max-w-[90%] font-serif text-[1.1rem] leading-snug text-brown md:mx-0 md:text-[1.28rem]">
+        <h3 className="mx-auto mt-[6%] max-w-[90%] font-display text-[1.15rem] leading-snug text-brown md:mx-0 md:text-[1.35rem]">
           {deal.title}
         </h3>
         <p className="mx-auto mt-3 max-w-[90%] text-[0.95rem] leading-relaxed text-brown md:mx-0 md:text-[1.02rem]">

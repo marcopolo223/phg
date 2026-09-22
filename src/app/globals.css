@@ -27,7 +27,6 @@
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
   --font-display: var(--font-display);
-  --font-quote: var(--font-quote);
   --default-font-family: var(--font-sans);
   --default-mono-font-family: var(--font-sans);
 }
@@ -48,7 +47,7 @@ body {
   color: var(--brown);
   font-family: var(--font-sans);
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.7;
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
@@ -76,32 +75,29 @@ pre {
 
 .font-serif {
   font-family: var(--font-serif);
-  font-weight: 500;
-}
-
-.font-quote {
-  font-family: var(--font-quote);
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .font-display {
   font-family: var(--font-display);
+  font-weight: 700;
   letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .font-label {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  letter-spacing: -0.04em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
 .nav-link {
-  font-family: var(--font-sans);
-  font-size: 13px;
+  font-family: var(--font-display);
+  font-size: 15px;
   font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: -0.045em;
+  line-height: 1;
+  letter-spacing: 0;
   font-kerning: normal;
   text-transform: uppercase;
   color: var(--brown);
@@ -113,8 +109,6 @@ pre {
 header nav .nav-link {
   display: inline-block;
   line-height: 1;
-  transform: scaleY(1.16);
-  transform-origin: top center;
 }
 
 .nav-link:hover,
@@ -136,8 +130,8 @@ button.nav-link {
 
 footer .nav-link {
   color: var(--cream);
-  font-size: 13px;
-  letter-spacing: -0.045em;
+  font-size: 15px;
+  letter-spacing: 0;
 }
 
 footer a.nav-link {
@@ -153,9 +147,9 @@ footer a.nav-link:hover {
 #mobile-nav .nav-link {
   display: block;
   width: 100%;
-  font-size: clamp(1.05rem, 4.2vw, 1.35rem);
-  letter-spacing: -0.045em;
-  line-height: 1.35;
+  font-size: clamp(1.35rem, 5vw, 1.85rem);
+  letter-spacing: 0;
+  line-height: 1.15;
   text-align: center;
   text-underline-offset: 0.22em;
 }
@@ -491,7 +485,7 @@ footer a.nav-link:hover {
 .mkt-name h2 {
   font-size: clamp(1.45rem, 7vw, 2.15rem);
   line-height: 0.95;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .mkt-copy p {
@@ -697,7 +691,7 @@ footer a.nav-link:hover {
 
   .mkt-name h2 {
     font-size: clamp(1.55rem, 5.5vw, 3.6rem);
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
   }
 
   .mkt-copy p {

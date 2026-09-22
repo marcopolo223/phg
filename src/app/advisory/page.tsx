@@ -96,7 +96,7 @@ export default async function AdvisoryPage() {
           />
         </Reveal>
         <Reveal delay={80} className="text-center md:text-left">
-          <p className="font-serif text-base uppercase text-brown">
+          <p className="font-display text-base text-brown">
             Offerings &amp; Services
           </p>
           <h2 className="mt-4 font-serif text-[clamp(1.7rem,5vw,2.5rem)] uppercase leading-[0.95] text-brown">
@@ -132,7 +132,7 @@ export default async function AdvisoryPage() {
 
       <section className="mx-auto max-w-[1680px] px-5 pb-24 md:px-12 md:pb-32">
         <Reveal>
-          <h2 className="font-serif text-[clamp(1.7rem,5vw,2.5rem)] uppercase text-brown">
+          <h2 className="font-display text-[clamp(1.7rem,5vw,2.5rem)] text-brown">
             The Advisory
           </h2>
           <p className="mt-5 max-w-md text-[1rem] leading-[1.8] text-brown md:text-[1.05rem]">
@@ -153,7 +153,7 @@ export default async function AdvisoryPage() {
           <div className="space-y-12">
             {audiences.map((item, i) => (
               <Reveal key={item.title} delay={i * 40}>
-                <p className="font-serif text-lg uppercase text-brown">
+                <p className="font-display text-lg text-brown">
                   {item.title}
                 </p>
                 <p className="mt-3 max-w-lg leading-[1.95] text-brown">
@@ -168,7 +168,7 @@ export default async function AdvisoryPage() {
       {quotes.length ? (
         <section className="px-5 py-16 md:px-12 md:py-24">
           <Reveal>
-            <p className="text-center font-serif text-base uppercase text-brown">
+            <p className="text-center font-display text-base text-brown">
               Overheard
             </p>
             <h2 className="mt-3 text-center font-serif text-[clamp(2rem,7vw,3.35rem)] uppercase tracking-tight text-brown">
@@ -191,7 +191,7 @@ export default async function AdvisoryPage() {
               height={1100}
               className="mx-auto mb-10 aspect-[4/5] w-[78%] object-cover md:mx-0 md:w-[82%]"
             />
-            <h3 className="font-serif text-[clamp(1.45rem,4vw,1.85rem)] uppercase text-brown">
+            <h3 className="font-display text-[clamp(1.45rem,4vw,1.85rem)] text-brown">
               The Inner Circle
             </h3>
             <div>
@@ -207,7 +207,7 @@ export default async function AdvisoryPage() {
               </p>
             </div>
             <details className="group mt-8 border-t border-brown/20 pt-4">
-              <summary className="min-h-11 cursor-pointer list-none py-2 font-serif text-lg uppercase text-brown [&::-webkit-details-marker]:hidden">
+              <summary className="min-h-11 cursor-pointer list-none py-2 font-display text-lg text-brown [&::-webkit-details-marker]:hidden">
                 Details
                 <span className="ml-2 inline-block transition group-open:rotate-45">
                   +
@@ -215,7 +215,7 @@ export default async function AdvisoryPage() {
               </summary>
               <dl className="mt-6 space-y-5 text-[1.02rem] leading-relaxed text-brown">
                 <div>
-                  <dt className="font-medium uppercase">
+                  <dt className="font-label text-[13px]">
                     Capacity
                   </dt>
                   <dd className="text-brown/75">
@@ -223,7 +223,7 @@ export default async function AdvisoryPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-medium uppercase">
+                  <dt className="font-label text-[13px]">
                     Access
                   </dt>
                   <dd className="text-brown/75">
@@ -231,7 +231,7 @@ export default async function AdvisoryPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-medium uppercase">
+                  <dt className="font-label text-[13px]">
                     Includes
                   </dt>
                   <dd className="text-brown/75">
@@ -240,7 +240,7 @@ export default async function AdvisoryPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-medium uppercase">
+                  <dt className="font-label text-[13px]">
                     Structure
                   </dt>
                   <dd className="text-brown/75">
@@ -262,7 +262,7 @@ export default async function AdvisoryPage() {
               height={1100}
               className="mx-auto mb-10 aspect-[4/5] w-[78%] object-cover md:mx-0 md:w-[82%]"
             />
-            <h3 className="font-serif text-[clamp(1.45rem,4vw,1.85rem)] uppercase text-brown">
+            <h3 className="font-display text-[clamp(1.45rem,4vw,1.85rem)] text-brown">
               Portfolio Partnership
             </h3>
             <div>
@@ -279,7 +279,7 @@ export default async function AdvisoryPage() {
               </p>
             </div>
             <details className="group mt-8 border-t border-brown/20 pt-4">
-              <summary className="min-h-11 cursor-pointer list-none py-2 font-serif text-lg uppercase text-brown [&::-webkit-details-marker]:hidden">
+              <summary className="min-h-11 cursor-pointer list-none py-2 font-display text-lg text-brown [&::-webkit-details-marker]:hidden">
                 Details
                 <span className="ml-2 inline-block transition group-open:rotate-45">
                   +
@@ -287,7 +287,7 @@ export default async function AdvisoryPage() {
               </summary>
               <dl className="mt-6 space-y-5 text-[1.02rem] leading-relaxed text-brown">
                 <div>
-                  <dt className="font-medium uppercase">
+                  <dt className="font-label text-[13px]">
                     Capacity
                   </dt>
                   <dd className="text-brown/75">
@@ -295,7 +295,7 @@ export default async function AdvisoryPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-medium uppercase">
+                  <dt className="font-label text-[13px]">
                     Access
                   </dt>
                   <dd className="text-brown/75">
@@ -303,7 +303,7 @@ export default async function AdvisoryPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-medium uppercase">
+                  <dt className="font-label text-[13px]">
                     Includes
                   </dt>
                   <dd className="text-brown/75">
@@ -313,7 +313,7 @@ export default async function AdvisoryPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-medium uppercase">
+                  <dt className="font-label text-[13px]">
                     Structure
                   </dt>
                   <dd className="text-brown/75">

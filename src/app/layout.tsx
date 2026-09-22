@@ -67,14 +67,6 @@ const display = localFont({
   adjustFontFallback: false,
 });
 
-const quote = localFont({
-  src: "../fonts/MinionPro-Regular.otf",
-  variable: "--font-quote",
-  weight: "400",
-  display: "block",
-  adjustFontFallback: false,
-});
-
 export const metadata: Metadata = {
   title: {
     default: "Prince Hassan Group",
@@ -99,7 +91,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${sans.variable} ${serif.variable} ${display.variable} ${quote.variable} h-full antialiased`}
+      className={`${sans.variable} ${serif.variable} ${display.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-cream text-brown">
         <SiteFrame>{children}</SiteFrame>

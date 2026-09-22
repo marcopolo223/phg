@@ -429,7 +429,7 @@ function QuotesPanel({ quotes }: { quotes: Quote[] }) {
                 quote.hidden ? "opacity-55" : ""
               }`}
             >
-              <p className="font-quote text-[1.2rem] leading-relaxed md:text-[1.35rem]">
+              <p className="font-sans font-light text-[1.2rem] uppercase leading-relaxed md:text-[1.35rem]">
                 “{quote.body}”
               </p>
               <div className="mt-5 flex flex-wrap items-center justify-between gap-4">

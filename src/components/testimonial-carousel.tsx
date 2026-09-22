@@ -8,7 +8,7 @@ function QuoteCard({ item }: { item: Quote }) {
   return (
     <article className="testimonial-card">
       <blockquote>
-        <p className="font-quote text-[1.15rem] leading-[1.7] text-brown md:text-[1.28rem] md:leading-[1.75]">
+        <p className="font-sans font-light text-[1.15rem] uppercase leading-[1.7] text-brown md:text-[1.28rem] md:leading-[1.75]">
           “<QuoteText text={item.body} />”
         </p>
         <footer className="mt-8 font-label text-[13px] text-brown/80 md:mt-10 md:text-[14px]">

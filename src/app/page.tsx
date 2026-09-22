@@ -65,7 +65,7 @@ export default async function HomePage() {
                   Coral Gables—and the portfolios that connect them.
                 </p>
               </div>
-              <p className="mt-12 text-[14px] uppercase text-brown-ink md:text-[15px]">
+              <p className="mt-12 font-display text-[14px] text-brown-ink md:text-[15px]">
                 For Prince, every deal is a seal in a larger legacy.
               </p>
             </div>
