@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
-import { site } from "@/lib/site";
 
 const left = [
   { href: "/", label: "About" },
@@ -10,10 +9,7 @@ const left = [
   { href: "/experiences", label: "Experiences" },
 ];
 
-const right = [
-  { href: "/contact-prince", label: "Contact Prince" },
-  { href: site.instagram, label: "Instagram", external: true },
-];
+const right = [{ href: "/contact-prince", label: "Contact Prince" }];
 
 export function Footer() {
   return (
@@ -44,30 +40,15 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center gap-1.5 text-center md:col-start-3 md:row-start-1 md:items-end md:text-right">
-          {right.map((item) =>
-            item.external ? (
-              <a
-                key={item.href}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="nav-link w-fit py-1.5 md:ml-auto"
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="nav-link w-fit py-1.5 md:ml-auto"
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
-          <span className="nav-link pointer-events-none w-fit py-1.5 md:ml-auto">
-            Compass Active Listings
-          </span>
+          {right.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="nav-link w-fit py-1.5 md:ml-auto"
+            >
+              {item.label}
+            </Link>
+          ))}
           <p className="mt-5 font-label text-[11px] text-cream/60 md:mt-6 md:text-[12px]">
             © 2026 Prince Hassan. All rights reserved.
           </p>

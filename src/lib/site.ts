@@ -2,7 +2,6 @@ export const site = {
   name: "Prince Hassan Group",
   email: "prince@princehassangroup.com",
   address: ["1212 Lincoln Rd. Suite 113", "Miami Beach, FL 33139"],
-  instagram: "https://www.instagram.com/princehassangroup/?hl=en",
   tagline: "Precision · Pulse · Presence",
 };
 
