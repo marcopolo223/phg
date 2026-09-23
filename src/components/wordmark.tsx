@@ -3,12 +3,14 @@ export function Wordmark({
   size = "nav",
 }: {
   className?: string;
-  size?: "nav" | "footer";
+  size?: "nav" | "footer" | "enter";
 }) {
   const sizeClass =
-    size === "footer"
-      ? "text-[1.7rem] md:text-[2.15rem] lg:text-[2.45rem]"
-      : "text-[1.48rem] sm:text-[1.58rem] md:text-[1.78rem] lg:text-[1.95rem]";
+    size === "enter"
+      ? "text-[2.55rem] md:text-[3.15rem] lg:text-[3.55rem]"
+      : size === "footer"
+        ? "text-[1.7rem] md:text-[2.15rem] lg:text-[2.45rem]"
+        : "text-[1.48rem] sm:text-[1.58rem] md:text-[1.78rem] lg:text-[1.95rem]";
 
   return (
     <span
